@@ -1,0 +1,26 @@
+{
+  "name": "le-taguenet",
+  "description": "Le Taguenet, text lacunaire sur les villes et villages de Suisse romande.",
+  "main": "src/index.js",
+  "repository": "https://github.com/ChrisRast/Le-Taguenet.git",
+  "author": "Christophe Rast",
+  "license": "MIT",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.14"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-react": "^7.4.0"
+  }
+}
