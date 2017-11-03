@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextComponent from './text-component';
-import words from './../data/words';
+import words from '../../data/words';
 
-export default class MainComponent extends React.Component {
+export default class MainComponent extends React.PureComponent {
 	static childContextTypes = {
 		validateWord: PropTypes.func
 	}

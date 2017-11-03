@@ -1,5 +1,8 @@
 {
   "extends": "react",
+  "env": {
+    "browser": true,
+  },
   "rules": {
     "react/sort-comp": 0,
     "indent": [1, "tab"],
