@@ -1,36 +1,79 @@
 import React from 'react';
-import * as r from 'react-router-dom';
-import ROUTES from '../../config/routes';
+import PropTypes from 'prop-types';
+import * as ui from 'semantic-ui-react';
 
-export default class NavMenu extends React.PureComponent {
+export default class NavMenu extends React.Component {
+	/**
+	 * Range of validators that can be used to make sure the received data is valid
+	 * @public
+	 * @type {Object}
+	 */
+	static propTypes = {
+		routes: PropTypes.arrayOf(PropTypes.shape({
+			path: PropTypes.string,
+			menu: PropTypes.shape({
+				label: PropTypes.string
+			}),
+			routing: PropTypes.shape({
+				component: PropTypes.func
+			})
+		}))
+	}
+
+	/**
+	 * Default values for properties
+	 * @public
+	 * @type {object}
+	 */
+	static defaultProps = {
+		routes: []
+	}
+
+	/**
+	 * Go to the specified path
+	 * @method    goTo
+	 * @protected
+	 * @param     {String} path Path to add to history
+	 * @return    {void}
+	 */
+	goTo (path) {
+		const {
+			history
+		} = this.props;
+		history.push(path);
+	}
+
 	getRoutesNavLink () {
-		return ROUTES.map((route, index) => {
+		const {
+			routes
+		} = this.props;
+		return routes.map((route, index) => {
 			const {
 				path,
 				menu
 			} = route;
 			const {
-				label,
-				other
+				label
 			} = menu;
 			return (
-				<r.NavLink
+				<ui.Menu.Item
 					key={index}
-					to={path}
-					exact
-					activeClassName="active"
-					{...other}
+					onClick={this.goTo.bind(this, path)}
 				>
 					{label}
-				</r.NavLink>
+				</ui.Menu.Item>
 			);
 		});
 	}
 	render () {
 		return (
-			<div>
-				{this.getRoutesNavLink()}
-			</div>
+			<nav>
+				<ui.Menu
+					widths={this.props.routes.length}
+				>
+					{this.getRoutesNavLink()}
+				</ui.Menu>
+			</nav>
 		);
 	}
 }

@@ -1,6 +1,8 @@
-import MainComponent from '../components/text/main-component';
+import MainComponent from '../components/text';
 import Contact from '../components/contact';
-console.log("Contact", Contact);
+import About from '../components/about';
+import Home from '../components/home';
+
 export default [
 	{
 		path: '/',
@@ -8,6 +10,7 @@ export default [
 			label: 'Home'
 		},
 		routing: {
+			component: Home
 		}
 	},
 	{
@@ -24,7 +27,9 @@ export default [
 		menu: {
 			label: 'À propos'
 		},
-		routing: {}
+		routing: {
+			component: About
+		}
 	},
 	{
 		path: '/contact',
