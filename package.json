@@ -1,6 +1,6 @@
 {
   "name": "le-taguenet",
-  "description": "Le Taguenet, text lacunaire sur les villes et villages de Suisse romande.",
+  "description": "Le Taguenet, texte lacunaire sur les villes et villages de Suisse romande.",
   "main": "src/index.js",
   "repository": "https://github.com/ChrisRast/Le-Taguenet.git",
   "author": "Christophe Rast",
@@ -17,17 +17,18 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-scripts": "1.0.14",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.0.17",
+    "remove-accents": "^0.4.2",
     "semantic-ui-css": "^2.2.12",
-    "semantic-ui-react": "^0.76.0"
+    "semantic-ui-react": "^0.77.0"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.1",
+    "babel-eslint": "^8.0.3",
     "eslint-config-react": "^1.1.7",
-    "eslint-plugin-react": "^7.4.0",
-    "gh-pages": "^1.0.0",
+    "eslint-plugin-react": "^7.5.1",
+    "gh-pages": "^1.1.0",
     "react-router-dom": "^4.2.2"
   }
 }

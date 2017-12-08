@@ -1,6 +1,14 @@
 .App {
-  text-align: left;
   max-width: 800px;
-  margin: 0 auto;
-  font-family: serif;
+  margin: 2rem auto;
+}
+
+.text,
+.ui.text,
+.ui.text.container {
+	font-family: serif;
+}
+
+.space-bottom {
+	margin-bottom: 2rem;
 }

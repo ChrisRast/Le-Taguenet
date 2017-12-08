@@ -1,26 +1,30 @@
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import './App.css';
-import * as r from 'react-router-dom';
 import ROUTES from './config/routes';
 import {
-	NavMenu,
-	NotFound
-} from './components/nav';
+	Header,
+	Footer
+} from './app/components/nav';
+import NotFound from './app/components/not-found';
+import NavContainer from './app/containers/nav-container';
+import * as r from 'react-router-dom';
+import * as ui from 'semantic-ui-react';
 
-const NavMenuWithRouter = r.withRouter(NavMenu);
+const NavMenuWithRouter = r.withRouter(NavContainer);
 
 export default class App extends React.Component {
 	render () {
 		return (
 			<div className="App">
+				<Header />
 				<NavMenuWithRouter
 					routes={ROUTES}
 				/>
-				<div
+				<ui.Container
 					className="content"
+					text
 				>
-
 					<r.Switch>
 						{ROUTES.map((route, index) => {
 							const {
@@ -43,7 +47,8 @@ export default class App extends React.Component {
 						})}
 						<r.Route component={NotFound}/>
 					</r.Switch>
-				</div>
+				</ui.Container>
+				<Footer />
 			</div>
 		);
 	}

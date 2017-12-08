@@ -1,7 +1,7 @@
-import MainComponent from '../components/text';
-import Contact from '../components/contact';
-import About from '../components/about';
-import Home from '../components/home';
+import Text from '../app/containers/text-container';
+import Contact from '../app/containers/contact-container';
+import About from '../app/containers/about-container';
+import Home from '../app/containers/home-container';
 
 export default [
 	{
@@ -19,7 +19,7 @@ export default [
 			label: 'Le texte'
 		},
 		routing: {
-			component: MainComponent
+			component: Text
 		}
 	},
 	{

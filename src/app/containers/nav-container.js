@@ -9,6 +9,8 @@ export default class NavMenu extends React.Component {
 	 * @type {Object}
 	 */
 	static propTypes = {
+		history: PropTypes.object.isRequired,
+		location: PropTypes.object.isRequired,
 		routes: PropTypes.arrayOf(PropTypes.shape({
 			path: PropTypes.string,
 			menu: PropTypes.shape({
@@ -45,7 +47,8 @@ export default class NavMenu extends React.Component {
 
 	getRoutesNavLink () {
 		const {
-			routes
+			routes,
+			location
 		} = this.props;
 		return routes.map((route, index) => {
 			const {
@@ -59,6 +62,7 @@ export default class NavMenu extends React.Component {
 				<ui.Menu.Item
 					key={index}
 					onClick={this.goTo.bind(this, path)}
+					active={location.pathname === path}
 				>
 					{label}
 				</ui.Menu.Item>
@@ -67,13 +71,13 @@ export default class NavMenu extends React.Component {
 	}
 	render () {
 		return (
-			<nav>
-				<ui.Menu
-					widths={this.props.routes.length}
-				>
-					{this.getRoutesNavLink()}
-				</ui.Menu>
-			</nav>
+			<ui.Menu
+				pointing
+				widths={this.props.routes.length}
+				className="space-bottom"
+			>
+				{this.getRoutesNavLink()}
+			</ui.Menu>
 		);
 	}
 }
