@@ -1,7 +1,7 @@
-import Text from '../app/containers/text-container';
-import Contact from '../app/containers/contact-container';
-import About from '../app/containers/about-container';
-import Home from '../app/containers/home-container';
+import Text from '../containers/text-container';
+import Contact from '../containers/contact-container';
+import About from '../containers/about-container';
+import Home from '../containers/home-container';
 
 export default [
 	{

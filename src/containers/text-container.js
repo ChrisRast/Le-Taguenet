@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextComponent from './../components/text/text-component';
-import words from '../../data/words';
+import words from '../data/words';
 import accents from 'remove-accents';
 import * as ui from 'semantic-ui-react';
 import OptionsComponent from './../components/text/options-component';

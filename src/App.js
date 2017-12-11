@@ -5,9 +5,9 @@ import ROUTES from './config/routes';
 import {
 	Header,
 	Footer
-} from './app/components/nav';
-import NotFound from './app/components/not-found';
-import NavContainer from './app/containers/nav-container';
+} from './components/nav';
+import NotFound from './components/not-found';
+import NavContainer from './containers/nav-container';
 import * as r from 'react-router-dom';
 import * as ui from 'semantic-ui-react';
 
