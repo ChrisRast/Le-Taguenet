@@ -7,6 +7,7 @@
   "rules": {
     "react/sort-comp": 0,
     "indent": [1, "tab"],
-    "max-len": 0
+    "max-len": 0,
+    "no-console": ["warn", { "allow": ["warn", "error"] }]
   }
 }
