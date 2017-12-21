@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextComponent from './../components/text/text-component';
-import words from '../data/words';
+import wordsData from '../data/words';
 import accents from 'remove-accents';
 import * as ui from 'semantic-ui-react';
 import OptionsComponent from './../components/text/options-component';
@@ -15,7 +15,7 @@ export default class MainComponent extends React.PureComponent {
 		strict: false,
 		hint: null,
 		difficulty: 0,
-		validity: null
+		words: {}
 	}
 
 	/**
@@ -29,12 +29,17 @@ export default class MainComponent extends React.PureComponent {
 	}
 
 	initState () {
-		let newValidity = {};
-		Object.keys(words).forEach((key) => {
-			newValidity[key] = false;
+		let newWords = {};
+		Object.keys(wordsData).forEach((key) => {
+			const word = wordsData[key];
+			newWords[key] = {
+				...word,
+				loose: key,
+				validity: false
+			};
 		});
 		this.setState({
-			validity: newValidity
+			words: newWords
 		});
 	}
 
@@ -46,7 +51,8 @@ export default class MainComponent extends React.PureComponent {
 
 	validateWord (word, original) {
 		const {
-			strict
+			strict,
+			words
 		} = this.state;
 		const foundKey = Object.keys(words).find((key) => {
 			return key === original;
@@ -73,20 +79,32 @@ export default class MainComponent extends React.PureComponent {
 
 	updateStateValidity (key, state) {
 		const {
-			validity
+			words
 		} = this.state;
-		let newValidty = Object.assign({}, validity);
-		newValidty[key] = Boolean(state);
+		const newWords = Object.assign({}, words);
+		newWords[key] = {
+			...newWords[key],
+			validity: Boolean(state)
+		};
 		this.setState({
-			validity: newValidty
+			words: newWords
 		});
 	}
 
+	/**
+	 * Tells if the whole text is valid
+	 * False if at least one word is not valid
+	 * @method    isValid
+	 * @protected
+	 * @return    {Boolean} True if all words have a validity at true.
+	 */
 	isValid () {
 		const {
-			validity
+			words
 		} = this.state;
-		return !Object.values(validity).includes(false);
+		return Object.values(words).every((key) => {
+			return words[key].validity;
+		});
 	}
 
 	// Hints: display length, canton
@@ -105,8 +123,10 @@ export default class MainComponent extends React.PureComponent {
 
 	render () {
 		const {
-			strict
+			strict,
+			words
 		} = this.state;
+
 		return (
 			<ui.Container>
 				<OptionsComponent

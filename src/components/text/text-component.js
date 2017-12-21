@@ -5,11 +5,19 @@ import * as ui from 'semantic-ui-react';
 
 export default class TextComponent extends React.PureComponent {
 	static propTypes = {
-		words: PropTypes.object
+		words: PropTypes.objectOf(
+			PropTypes.shape({
+				loose: PropTypes.string,
+				canton: PropTypes.string,
+				difficulty: PropTypes.number,
+				strict: PropTypes.string,
+				validity: PropTypes.bool
+			})
+		)
 	}
 
 	static defaultProps = {
-		words: []
+		words: {}
 	}
 
 	wordIterator = null;
@@ -48,8 +56,14 @@ export default class TextComponent extends React.PureComponent {
 		const {
 			value = ''
 		} = this.wordIterator.next();
+		const {
+			words
+		} = this.props;
+		if (value === '') {
+			return null;
+		}
 		return (
-			<WordComponent word={value} />
+			<WordComponent word={words[value]} />
 		);
 	}
 

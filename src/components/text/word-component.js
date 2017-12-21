@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 export default class WordComponent extends React.PureComponent {
 	static propTypes = {
-		register: PropTypes.func,
-		word: PropTypes.string
-	}
-
-	static defaultProps = {
-		register: null,
-		word: ''
+		word: PropTypes.shape({
+			loose: PropTypes.string,
+			canton: PropTypes.string,
+			difficulty: PropTypes.number,
+			strict: PropTypes.string,
+			validity: PropTypes.bool
+		}).isRequired
 	}
 
 	static contextTypes = {
@@ -23,39 +23,6 @@ export default class WordComponent extends React.PureComponent {
 
 	typing = false;
 
-	/**
-	 * Invoked once, both on the client and server, immediately before the initial rendering occurs.
-	 * @protected
-	 * @method componentWillMount
-	 * @return {void}
-	 */
-	componentWillMount () {
-		const {
-			register,
-			word
-		} = this.props;
-		if (typeof register === 'function') {
-			register(word, this);
-		}
-	}
-
-
-	/**
-	 * Invoked immediately before a component is unmounted from the DOM.
-	 * @protected
-	 * @method componentWillUnmount
-	 * @return {void}
-	 */
-	componentWillUnmount () {
-		const {
-			register,
-			word
-		} = this.props;
-		if (typeof register === 'function') {
-			register(word, null);
-		}
-	}
-
 	onChangeValidateWord () {
 		const {
 			validateWord
@@ -66,22 +33,22 @@ export default class WordComponent extends React.PureComponent {
 		const {
 			value
 		} = this.refs.input;
-		let valid = false;
 		if (typeof validateWord === 'function') {
-			valid = validateWord(value, word);
+			validateWord(value, word.loose);
 		}
 		this.setState({
-			valid,
 			value
 		});
 	}
 
 	render () {
 		const {
-			value,
-			valid
+			value
 		} = this.state;
-		const borderColor = valid ? 'lightgreen' : 'orange';
+		const {
+			word
+		} = this.props;
+		const borderColor = word.validity ? 'lightgreen' : 'orange';
 		return (
 			<input
 				style={{
