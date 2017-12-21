@@ -28,12 +28,25 @@ export default class MainComponent extends React.PureComponent {
 		this.initState();
 	}
 
+	/**
+	 * Invoked immediately after the component's updates are flushed to the DOM. This method is not called for the initial render.
+	 * @protected
+	 * @method componentDidUpdate
+	 * @param  {object}   prevProps  The prev properties of the component
+	 * @param  {object}   prevState  The prev state of the component
+	 * @return {void}
+	 */
+	componentDidUpdate (prevProps, prevState) {
+		this.validateAllWords();
+	}
+
 	initState () {
 		let newWords = {};
 		Object.keys(wordsData).forEach((key) => {
 			const word = wordsData[key];
 			newWords[key] = {
 				...word,
+				input: '',
 				loose: key,
 				validity: false
 			};
@@ -49,42 +62,52 @@ export default class MainComponent extends React.PureComponent {
 		};
 	}
 
-	validateWord (word, original) {
+	validateWord (newInputValue, word) {
 		const {
-			strict,
-			words
+			strict
 		} = this.state;
-		const foundKey = Object.keys(words).find((key) => {
-			return key === original;
-		});
 		const {
-			strict: strictLabel
-		} = words[foundKey] || {};
-		let validity = false;
+			input: oldInputValue,
+			strict: strictLabel,
+			validity: wordValidity
+		} = word;
+		let newValidity = false;
 
 		if (strictLabel) {
 			if (strict) {
-				validity = word === strictLabel;
+				newValidity = newInputValue === strictLabel;
 			} else {
-				const normalizedWord = accents.remove(word).toUpperCase();
+				const normalizedWord = accents.remove(newInputValue).toUpperCase();
 				const normalizedStrict = accents.remove(strictLabel).toUpperCase();
 
-				validity = normalizedWord === normalizedStrict;
+				newValidity = normalizedWord === normalizedStrict;
 			}
 		}
-		this.updateStateValidity(foundKey, validity);
+		if (newValidity !== wordValidity || oldInputValue !== newInputValue) {
+			this.updateStateWordsValidity(word.loose, newValidity, newInputValue);
+		}
 
-		return validity;
+		return newValidity;
 	}
 
-	updateStateValidity (key, state) {
+	validateAllWords () {
+		const {
+			words
+		} = this.state;
+		Object.keys(words).forEach((key) => {
+			this.validateWord(words[key].input, words[key]);
+		});
+	}
+
+	updateStateWordsValidity (key, validity, inputValue) {
 		const {
 			words
 		} = this.state;
 		const newWords = Object.assign({}, words);
 		newWords[key] = {
 			...newWords[key],
-			validity: Boolean(state)
+			input: inputValue,
+			validity: Boolean(validity)
 		};
 		this.setState({
 			words: newWords
@@ -116,6 +139,7 @@ export default class MainComponent extends React.PureComponent {
 		const {
 			strict
 		} = this.state;
+
 		this.setState({
 			strict: !strict
 		});

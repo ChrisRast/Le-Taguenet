@@ -4,7 +4,13 @@ import WordComponent from './word-component';
 import * as ui from 'semantic-ui-react';
 
 export default class TextComponent extends React.PureComponent {
+	/**
+	 * Range of validators that can be used to make sure the received data is valid
+	 * @public
+	 * @type {Object}
+	 */
 	static propTypes = {
+		strict: PropTypes.bool,
 		words: PropTypes.objectOf(
 			PropTypes.shape({
 				loose: PropTypes.string,
@@ -16,7 +22,13 @@ export default class TextComponent extends React.PureComponent {
 		)
 	}
 
+	/**
+	 * Default values for properties
+	 * @public
+	 * @type {object}
+	 */
 	static defaultProps = {
+		strict: false,
 		words: {}
 	}
 
@@ -57,13 +69,17 @@ export default class TextComponent extends React.PureComponent {
 			value = ''
 		} = this.wordIterator.next();
 		const {
-			words
+			words,
+			strict
 		} = this.props;
 		if (value === '') {
 			return null;
 		}
 		return (
-			<WordComponent word={words[value]} />
+			<WordComponent
+				strict={strict}
+				word={words[value]}
+			/>
 		);
 	}
 

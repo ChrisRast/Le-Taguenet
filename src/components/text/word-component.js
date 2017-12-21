@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class WordComponent extends React.PureComponent {
 	static propTypes = {
+		strict: PropTypes.bool,
 		word: PropTypes.shape({
 			loose: PropTypes.string,
 			canton: PropTypes.string,
@@ -12,12 +13,21 @@ export default class WordComponent extends React.PureComponent {
 		}).isRequired
 	}
 
+	/**
+	 * Default values for properties
+	 * @public
+	 * @type {object}
+	 */
+	static defaultProps = {
+		strict: false,
+		words: {}
+	}
+
 	static contextTypes = {
 		validateWord: PropTypes.func
 	}
 
 	state = {
-		valid: false,
 		value: ''
 	}
 
@@ -32,9 +42,9 @@ export default class WordComponent extends React.PureComponent {
 		} = this.props;
 		const {
 			value
-		} = this.refs.input;
+		} = this.wordRefInput;
 		if (typeof validateWord === 'function') {
-			validateWord(value, word.loose);
+			validateWord(value, word);
 		}
 		this.setState({
 			value
@@ -49,13 +59,14 @@ export default class WordComponent extends React.PureComponent {
 			word
 		} = this.props;
 		const borderColor = word.validity ? 'lightgreen' : 'orange';
+
 		return (
 			<input
 				style={{
 					borderWidth: 0,
 					borderBottom: `1px solid ${borderColor}`
 				}}
-				ref="input"
+				ref={(ref) => { this.wordRefInput = ref; }}
 				type="text"
 				value={value}
 				onChange={this.onChangeValidateWord.bind(this)}
