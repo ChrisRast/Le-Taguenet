@@ -25,9 +25,7 @@
     "semantic-ui-react": "^0.77.0"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.3",
-    "eslint-config-react": "^1.1.7",
-    "eslint-plugin-react": "^7.5.1",
+    "eslint-config-react": "https://github.com/oquis/eslint-config-react.git#eslint-2-migration",
     "gh-pages": "^1.1.0",
     "react-router-dom": "^4.2.2"
   }
