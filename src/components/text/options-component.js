@@ -10,7 +10,10 @@ export default class OptionsComponent extends React.PureComponent {
 	 */
 	static propTypes = {
 		strict: PropTypes.bool,
-		onStrictChange: PropTypes.func
+		strictOptions: PropTypes.arrayOf(PropTypes.object),
+		onStrictChange: PropTypes.func,
+		difficulty: PropTypes.number,
+		difficultyOptions: PropTypes.arrayOf(PropTypes.object)
 	}
 
 	/**
@@ -20,7 +23,10 @@ export default class OptionsComponent extends React.PureComponent {
 	 */
 	static defaultProps = {
 		strict: false,
-		onStrictChange: null
+		strictOptions: [],
+		onStrictChange: null,
+		difficulty: 0,
+		difficultyOptions: []
 	}
 
 	onCheckStrict () {
@@ -40,22 +46,48 @@ export default class OptionsComponent extends React.PureComponent {
 	 */
 	render () {
 		const {
-			strict
+			strict,
+			strictOptions,
+			difficulty,
+			difficultyOptions
 		} = this.props;
 
 		return (
-			<ui.Container>
-				<ui.Header
-					as="h2"
+			// <ui.Container>
+			<ui.Menu>
+				<ui.Menu.Item
+					header
 				>
 					Options&nbsp;:
-				</ui.Header>
-				<ui.Checkbox
-					label="Validation stricte"
-					onChange={this.onCheckStrict.bind(this)}
-					checked={strict}
-				/>
-			</ui.Container>
+				</ui.Menu.Item>
+				{/* <ui.Menu.Item>
+					<ui.Checkbox
+						label="Validation stricte"
+						onChange={this.onCheckStrict.bind(this)}
+						checked={strict}
+						toggle
+					/>
+				</ui.Menu.Item> */}
+				<ui.Menu.Item>
+					Orthographe&nbsp;:&nbsp;
+					<ui.Dropdown
+						inline
+						compact
+						defaultValue={strict.toString()}
+						options={strictOptions}
+					/>
+				</ui.Menu.Item>
+				<ui.Menu.Item>
+					Difficulté&nbsp;:&nbsp;
+					<ui.Dropdown
+						inline
+						compact
+						defaultValue={difficulty}
+						options={difficultyOptions}
+					/>
+				</ui.Menu.Item>
+			</ui.Menu>
+			// </ui.Container>
 		);
 	}
 }

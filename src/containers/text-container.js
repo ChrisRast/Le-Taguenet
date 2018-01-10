@@ -2,11 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextComponent from './../components/text/text-component';
 import wordsData from '../data/words';
+import {
+	difficulty,
+	validation
+} from '../data/labels';
 import accents from 'remove-accents';
 import * as ui from 'semantic-ui-react';
 import OptionsComponent from './../components/text/options-component';
 
-export default class MainComponent extends React.PureComponent {
+export default class TextContainer extends React.PureComponent {
 	static childContextTypes = {
 		validateWord: PropTypes.func
 	}
@@ -14,7 +18,7 @@ export default class MainComponent extends React.PureComponent {
 	state = {
 		strict: false,
 		hint: null,
-		difficulty: 0,
+		difficulty: 1,
 		words: {}
 	}
 
@@ -51,6 +55,7 @@ export default class MainComponent extends React.PureComponent {
 				validity: false
 			};
 		});
+		console.log("words", newWords);
 		this.setState({
 			words: newWords
 		});
@@ -145,17 +150,50 @@ export default class MainComponent extends React.PureComponent {
 		});
 	}
 
+	getDifficultyOptions () {
+		const {
+			words
+		} = this.state;
+		const options = [];
+		Object.keys(words).forEach((key) => {
+			const {
+				difficulty
+			} = words[key];
+			if (difficulty !== 0 && !options.includes(difficulty)) {
+				options.push(difficulty);
+			}
+		});
+		return options.sort().map((val) => {
+			return {
+				text: difficulty[val],
+				value: val
+			};
+		});
+	}
+
+	getValidationOptions () {
+		return Object.keys(validation).map((key) => {
+			return {
+				text: validation[key],
+				value: key
+			};
+		});
+	}
+
 	render () {
 		const {
 			strict,
-			words
+			words,
+			difficulty
 		} = this.state;
-
 		return (
 			<ui.Container>
 				<OptionsComponent
 					strict={strict}
+					strictOptions={this.getValidationOptions()}
 					onStrictChange={this.toggleStrict.bind(this)}
+					difficulty={difficulty}
+					difficultyOptions={this.getDifficultyOptions()}
 				/>
 				{/* difficulty and hints */}
 				{/* <HintsComponent

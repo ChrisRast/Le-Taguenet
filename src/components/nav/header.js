@@ -10,7 +10,7 @@ export default function Header (props) {
 			size="huge"
 		>
 			<ui.Header.Content
-				className="text"
+				className="ui text"
 			>
 				Le Taguenet
 			</ui.Header.Content>
