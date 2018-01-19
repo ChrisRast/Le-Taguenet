@@ -53,21 +53,13 @@ export default class OptionsComponent extends React.PureComponent {
 		} = this.props;
 
 		return (
-			// <ui.Container>
-			<ui.Menu>
+			<ui.Menu
+			>
 				<ui.Menu.Item
 					header
 				>
 					Options&nbsp;:
 				</ui.Menu.Item>
-				{/* <ui.Menu.Item>
-					<ui.Checkbox
-						label="Validation stricte"
-						onChange={this.onCheckStrict.bind(this)}
-						checked={strict}
-						toggle
-					/>
-				</ui.Menu.Item> */}
 				<ui.Menu.Item>
 					Orthographe&nbsp;:&nbsp;
 					<ui.Dropdown
@@ -87,7 +79,6 @@ export default class OptionsComponent extends React.PureComponent {
 					/>
 				</ui.Menu.Item>
 			</ui.Menu>
-			// </ui.Container>
 		);
 	}
 }

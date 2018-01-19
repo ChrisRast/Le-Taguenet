@@ -11,6 +11,7 @@ export default class TextComponent extends React.PureComponent {
 	 */
 	static propTypes = {
 		strict: PropTypes.bool,
+		difficulty: PropTypes.number,
 		words: PropTypes.objectOf(
 			PropTypes.shape({
 				loose: PropTypes.string,
@@ -29,7 +30,8 @@ export default class TextComponent extends React.PureComponent {
 	 */
 	static defaultProps = {
 		strict: false,
-		words: {}
+		words: {},
+		difficulty: 0
 	}
 
 	wordIterator = null;

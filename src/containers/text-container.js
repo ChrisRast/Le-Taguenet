@@ -202,6 +202,7 @@ export default class TextContainer extends React.PureComponent {
 				<TextComponent
 					strict={strict}
 					words={words}
+					difficulty={difficulty}
 				/>
 			</ui.Container>
 		);
