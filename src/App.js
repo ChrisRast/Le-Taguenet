@@ -14,6 +14,26 @@ import * as ui from 'semantic-ui-react';
 const NavMenuWithRouter = r.withRouter(NavContainer);
 
 export default class App extends React.Component {
+	renderRoute (route, index) {
+		const {
+			path,
+			routing
+		} = route;
+		const {
+			component = null,
+			...other
+		} = routing;
+		return component && (
+			<r.Route
+				key={index}
+				path={path}
+				component={component}
+				exact
+				{...other}
+			/>
+		);
+	}
+
 	render () {
 		return (
 			<div className="App">
@@ -26,25 +46,7 @@ export default class App extends React.Component {
 					text
 				>
 					<r.Switch>
-						{ROUTES.map((route, index) => {
-							const {
-								path,
-								routing
-							} = route;
-							const {
-								component = null,
-								...other
-							} = routing;
-							return component && (
-								<r.Route
-									key={index}
-									path={path}
-									component={component}
-									exact
-									{...other}
-								/>
-							);
-						})}
+						{ROUTES.map(this.renderRoute)}
 						<r.Route component={NotFound}/>
 					</r.Switch>
 				</ui.Container>
