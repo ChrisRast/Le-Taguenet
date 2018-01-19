@@ -1,0 +1,6 @@
+languages:
+- javascript
+component_depth: 3
+exclude:
+    - /src/config/.*
+    - /src/data/.*
