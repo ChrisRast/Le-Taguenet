@@ -29,7 +29,16 @@ export default class OptionsComponent extends React.PureComponent {
 		difficultyOptions: []
 	}
 
-	onCheckStrict () {
+	/**
+	 * @constructor
+	 */
+	constructor () {
+		super(...arguments);
+
+		this.onChangeStrict = this.onChangeStrict.bind(this);
+	}
+
+	onChangeStrict () {
 		const {
 			onStrictChange
 		} = this.props;
@@ -65,6 +74,7 @@ export default class OptionsComponent extends React.PureComponent {
 					<ui.Dropdown
 						inline
 						compact
+						onChange={this.onChangeStrict}
 						defaultValue={strict.toString()}
 						options={strictOptions}
 					/>

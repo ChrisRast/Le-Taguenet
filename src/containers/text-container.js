@@ -179,6 +179,12 @@ export default class TextContainer extends React.PureComponent {
 			};
 		});
 	}
+	// TODO
+	// Hints:
+	// Make word with sub menu to display:
+	// - word,
+	// - length,
+	// - canton
 
 	render () {
 		const {
@@ -195,10 +201,6 @@ export default class TextContainer extends React.PureComponent {
 					difficulty={difficulty}
 					difficultyOptions={this.getDifficultyOptions()}
 				/>
-				{/* difficulty and hints */}
-				{/* <HintsComponent
-					selectHint={this.selectHint.bind(this)}
-				/> */}
 				<TextComponent
 					strict={strict}
 					words={words}

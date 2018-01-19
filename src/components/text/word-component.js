@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as ui from 'semantic-ui-react';
 
 export default class WordComponent extends React.PureComponent {
 	static propTypes = {
@@ -28,12 +29,35 @@ export default class WordComponent extends React.PureComponent {
 	}
 
 	state = {
-		value: ''
+		value: '',
+		displayed: false
 	}
 
 	typing = false;
 
-	onChangeValidateWord () {
+	/**
+	 * @constructor
+	 */
+	constructor () {
+		super(...arguments);
+
+		this.onChangeValidateWord = this.onChangeValidateWord.bind(this);
+		this.toggleDisplayWord = this.toggleDisplayWord.bind(this);
+	}
+
+	/**
+	 * Invoked immediately after the component's updates are flushed to the DOM. This method is not called for the initial render.
+	 * @protected
+	 * @method componentDidUpdate
+	 * @param  {object}   prevProps  The prev properties of the component
+	 * @param  {object}   prevState  The prev state of the component
+	 * @return {void}
+	 */
+	componentDidUpdate (prevProps, prevState) {
+
+	}
+
+	onChangeValidateWord (e) {
 		const {
 			validateWord
 		} = this.context;
@@ -42,7 +66,7 @@ export default class WordComponent extends React.PureComponent {
 		} = this.props;
 		const {
 			value
-		} = this.wordRefInput;
+		} = e.target;
 		if (typeof validateWord === 'function') {
 			validateWord(value, word);
 		}
@@ -51,25 +75,49 @@ export default class WordComponent extends React.PureComponent {
 		});
 	}
 
+	toggleDisplayWord () {
+		const {
+			displayed
+		} = this.state;
+		this.setState({
+			displayed: !displayed
+		});
+	}
+
+	getIconChild () {
+		const {
+			displayed
+		} = this.state;
+		return (
+			<ui.Icon
+				link
+				onClick={this.toggleDisplayWord}
+				name={displayed ? 'hide' : 'unhide'}
+			/>
+		);
+	}
+
 	render () {
 		const {
-			value
+			value,
+			displayed
 		} = this.state;
 		const {
 			word
 		} = this.props;
-		const borderColor = word.validity ? 'lightgreen' : 'orange';
+		const borderColor = word.validity ? 'MediumSeaGreen' : 'Tomato';
 
 		return (
-			<input
+			<ui.Input
+				icon={this.getIconChild()}
+				transparent
 				style={{
-					borderWidth: 0,
 					borderBottom: `1px solid ${borderColor}`
 				}}
-				ref={(ref) => { this.wordRefInput = ref; }}
 				type="text"
 				value={value}
-				onChange={this.onChangeValidateWord.bind(this)}
+				onChange={this.onChangeValidateWord}
+				placeholder={displayed ? word.strict : ''}
 			/>
 		);
 	}

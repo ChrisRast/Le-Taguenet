@@ -92,12 +92,12 @@ export default class TextComponent extends React.PureComponent {
 				textAlign="left"
 				className="text space-bottom"
 			>
-				<p>
-					Le Taguenet était un curieux bonhomme. Il était le {this.getNextWord()} né d'une famille de dix enfants. À l'école il n'était pas un {this.getNextWord()} mathématique. Et il n'avait {this.getNextWord()} dans sa poche.'
-				</p>
-				<p>
-					Il regardait les gens de {this.getNextWord()} bouche {this.getNextWord()} des {this.getNextWord()} profondes barraient sont front bizarre, ce front encadré de magnifiques cheveux {this.getNextWord()}
-				</p>
+				<div>
+					Le Taguenet était un curieux bonhomme. Il était le {this.getNextWord()} né d'une famille de dix enfants. À l'école il n'était pas un {this.getNextWord()} mathématique. Et il n'avait {this.getNextWord()} dans sa poche.
+				</div>
+				<div>
+					Il regardait les gens de {this.getNextWord()} bouche {this.getNextWord()} des {this.getNextWord()} profondes barraient sont front bizarre, ce front encadré de magnifiques cheveux {this.getNextWord()}.
+				</div>
 			</ui.Container>
 		);
 	}
