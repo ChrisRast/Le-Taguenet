@@ -91,6 +91,8 @@ export default class WordComponent extends React.PureComponent {
 		return (
 			<ui.Icon
 				link
+				// size="small"
+				fitted
 				onClick={this.toggleDisplayWord}
 				name={displayed ? 'hide' : 'unhide'}
 			/>
@@ -108,17 +110,23 @@ export default class WordComponent extends React.PureComponent {
 		const borderColor = word.validity ? 'MediumSeaGreen' : 'Tomato';
 
 		return (
-			<ui.Input
-				icon={this.getIconChild()}
-				transparent
-				style={{
-					borderBottom: `1px solid ${borderColor}`
-				}}
-				type="text"
-				value={value}
-				onChange={this.onChangeValidateWord}
-				placeholder={displayed ? word.strict : ''}
-			/>
+			<div>
+				<span>{word.strict}</span>
+				{/* Apply width afterwards */}
+				<ui.Input
+					// icon={this.getIconChild()}
+					transparent
+					style={{
+						borderBottom: `1px solid ${borderColor}`
+					}}
+					fluid
+					type="text"
+					className="text"
+					value={value}
+					onChange={this.onChangeValidateWord}
+					placeholder={displayed ? word.strict : ''}
+				/>
+			</div>
 		);
 	}
 }

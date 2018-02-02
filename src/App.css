@@ -4,6 +4,7 @@
 }
 
 .ui.text,
+.ui.input.text input,
 .ui.text.container {
 	font-family: serif;
 }
