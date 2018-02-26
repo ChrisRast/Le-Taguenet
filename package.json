@@ -21,7 +21,7 @@
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1",
     "remove-accents": "^0.4.2",
-    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-css": "^2.3.0",
     "semantic-ui-react": "^0.77.2"
   },
   "devDependencies": {
