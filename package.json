@@ -17,7 +17,7 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
-    "react": "^16.2.0",
+    "react": "^16.3.2",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1",
     "remove-accents": "^0.4.2",
