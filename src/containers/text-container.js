@@ -15,11 +15,29 @@ export default class TextContainer extends React.PureComponent {
 		validateWord: PropTypes.func
 	}
 
+	/**
+	 * Default state of the component
+	 * @protected
+	 * @type {Object}
+	 */
 	state = {
 		strict: false,
 		hint: null,
 		difficulty: 1,
 		words: {}
+	}
+
+	/**
+	 * Class constructor
+	 * @public
+	 * @constructor
+	 * @param {Object} props Component properties
+	 * @return {void}
+	 */
+	constructor (props) {
+		super(props);
+
+		this.toggleStrict = this.toggleStrict.bind(this);
 	}
 
 	/**
@@ -55,7 +73,6 @@ export default class TextContainer extends React.PureComponent {
 				validity: false
 			};
 		});
-		console.log("words", newWords);
 		this.setState({
 			words: newWords
 		});
@@ -197,7 +214,7 @@ export default class TextContainer extends React.PureComponent {
 				<OptionsComponent
 					strict={strict}
 					strictOptions={this.getValidationOptions()}
-					onStrictChange={this.toggleStrict.bind(this)}
+					onStrictChange={this.toggleStrict}
 					difficulty={difficulty}
 					difficultyOptions={this.getDifficultyOptions()}
 				/>

@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import * as ui from 'semantic-ui-react';
 
 export default class WordComponent extends React.PureComponent {
+	/**
+	 * Range of validators that can be used to make sure the received data is valid
+	 * @public
+	 * @type {Object}
+	 */
 	static propTypes = {
 		strict: PropTypes.bool,
 		word: PropTypes.shape({
@@ -28,12 +33,27 @@ export default class WordComponent extends React.PureComponent {
 		validateWord: PropTypes.func
 	}
 
+	/**
+	 * Default state of the component
+	 * @protected
+	 * @type {Object}
+	 */
 	state = {
 		value: '',
 		displayed: false
 	}
 
+	/**
+	 * True if the user is typing
+	 * @type {Boolean}
+	 */
 	typing = false;
+
+	/**
+	 * Reference of the input
+	 * @type {Object}
+	 */
+	inputRef = null;
 
 	/**
 	 * @constructor
@@ -41,8 +61,10 @@ export default class WordComponent extends React.PureComponent {
 	constructor () {
 		super(...arguments);
 
+		this.inputRef = React.createRef();
 		this.onChangeValidateWord = this.onChangeValidateWord.bind(this);
-		this.toggleDisplayWord = this.toggleDisplayWord.bind(this);
+		this.displayWord = this.displayWord.bind(this);
+		this.hideWord = this.hideWord.bind(this);
 	}
 
 	/**
@@ -54,7 +76,7 @@ export default class WordComponent extends React.PureComponent {
 	 * @return {void}
 	 */
 	componentDidUpdate (prevProps, prevState) {
-
+		// console.log("this.inputRef", this.inputRef);
 	}
 
 	onChangeValidateWord (e) {
@@ -75,26 +97,47 @@ export default class WordComponent extends React.PureComponent {
 		});
 	}
 
-	toggleDisplayWord () {
-		const {
-			displayed
-		} = this.state;
+	displayWord () {
 		this.setState({
-			displayed: !displayed
+			displayed: true
 		});
 	}
 
-	getIconChild () {
+	hideWord () {
+		this.setState({
+			displayed: false
+		});
+	}
+
+	getDisplayWordIcon () {
 		const {
 			displayed
 		} = this.state;
 		return (
 			<ui.Icon
 				link
-				// size="small"
+				size="small"
 				fitted
-				onClick={this.toggleDisplayWord}
-				name={displayed ? 'hide' : 'unhide'}
+				onMouseDown={this.displayWord}
+				onMouseUp={this.hideWord}
+				onBlur={this.hideWord}
+				name={displayed ? 'unhide' : 'hide'}
+			/>
+		);
+	}
+	getValidityIcon () {
+		const {
+			word
+		} = this.props;
+
+		return (
+			<ui.Icon
+				link
+				size="small"
+				onMouseDown={this.displayWord}
+				onMouseUp={this.hideWord}
+				name={word.validity ? 'check' : 'x'}
+				color={word.validity ? 'green' : 'red'}
 			/>
 		);
 	}
@@ -107,26 +150,22 @@ export default class WordComponent extends React.PureComponent {
 		const {
 			word
 		} = this.props;
-		const borderColor = word.validity ? 'MediumSeaGreen' : 'Tomato';
 
 		return (
-			<div>
-				<span>{word.strict}</span>
-				{/* Apply width afterwards */}
-				<ui.Input
-					// icon={this.getIconChild()}
-					transparent
-					style={{
-						borderBottom: `1px solid ${borderColor}`
-					}}
-					fluid
-					type="text"
-					className="text"
-					value={value}
-					onChange={this.onChangeValidateWord}
-					placeholder={displayed ? word.strict : ''}
-				/>
-			</div>
+			<ui.Input
+				ref={this.inputRef}
+				transparent
+				type="text"
+				className="text word"
+				value={displayed ? '' : value}
+				focus
+				onChange={this.onChangeValidateWord}
+				placeholder={displayed ? word.strict : ''}
+			>
+				<input />
+				{this.getValidityIcon()}
+				{this.getDisplayWordIcon()}
+			</ui.Input>
 		);
 	}
 }
