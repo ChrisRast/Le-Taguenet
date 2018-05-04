@@ -12,7 +12,7 @@ export default function Footer (props) {
 			>
 				<ui.List.Item
 					icon="copyright"
-					content={<a href="http://imchris.ch" target="blank">Christophe Rast</a>}
+					content="Christophe Rast"
 				/>
 				<ui.List.Item
 					icon="code"
