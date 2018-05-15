@@ -21,9 +21,8 @@ export default class TextContainer extends React.PureComponent {
 	 * @type {Object}
 	 */
 	state = {
-		strict: false,
-		hint: null,
-		difficulty: 1,
+		strict: true,
+		difficulty: 2,
 		words: {}
 	}
 
@@ -38,6 +37,7 @@ export default class TextContainer extends React.PureComponent {
 		super(props);
 
 		this.toggleStrict = this.toggleStrict.bind(this);
+		this.changeDifficulty = this.changeDifficulty.bind(this);
 	}
 
 	/**
@@ -137,24 +137,28 @@ export default class TextContainer extends React.PureComponent {
 	}
 
 	/**
-	 * Tells if the whole text is valid
-	 * False if at least one word is not valid
-	 * @method    isValid
+	 * Tells how many words are valid
+	 * @method    countValid
 	 * @protected
-	 * @return    {Boolean} True if all words have a validity at true.
+	 * @return    {Number} True if all words have a validity at true.
 	 */
-	isValid () {
+	countValid () {
 		const {
 			words
 		} = this.state;
-		return Object.values(words).every((key) => {
-			return words[key].validity;
-		});
+		return (Object.values(words).filter((word) => {
+			return word.validity;
+		}) || []).length;
 	}
 
-	// Hints: display length, canton
-	selectHint (hint) {
+	countTotalWords (words = this.state.words) {
+		const {
+			difficulty
+		} = this.state;
 
+		return (Object.values(words).filter((word) => {
+			return word.difficulty <= difficulty;
+		}) || []).length;
 	}
 
 	toggleStrict () {
@@ -167,11 +171,22 @@ export default class TextContainer extends React.PureComponent {
 		});
 	}
 
+	changeDifficulty (value) {
+		const {
+			difficulty
+		} = this.state;
+		if (difficulty !== value) {
+			this.setState({
+				difficulty: value
+			});
+		}
+	}
+
 	getDifficultyOptions () {
 		const {
 			words
 		} = this.state;
-		const options = [];
+		const options = [0];
 		Object.keys(words).forEach((key) => {
 			const {
 				difficulty
@@ -196,12 +211,6 @@ export default class TextContainer extends React.PureComponent {
 			};
 		});
 	}
-	// TODO
-	// Hints:
-	// Make word with sub menu to display:
-	// - word,
-	// - length,
-	// - canton
 
 	render () {
 		const {
@@ -217,6 +226,9 @@ export default class TextContainer extends React.PureComponent {
 					onStrictChange={this.toggleStrict}
 					difficulty={difficulty}
 					difficultyOptions={this.getDifficultyOptions()}
+					onDifficultyChange={this.changeDifficulty}
+					total={this.countTotalWords()}
+					valid={this.countValid()}
 				/>
 				<TextComponent
 					strict={strict}

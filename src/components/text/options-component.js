@@ -13,7 +13,8 @@ export default class OptionsComponent extends React.PureComponent {
 		strictOptions: PropTypes.arrayOf(PropTypes.object),
 		onStrictChange: PropTypes.func,
 		difficulty: PropTypes.number,
-		difficultyOptions: PropTypes.arrayOf(PropTypes.object)
+		difficultyOptions: PropTypes.arrayOf(PropTypes.object),
+		onDifficultyChange: PropTypes.func
 	}
 
 	/**
@@ -26,16 +27,18 @@ export default class OptionsComponent extends React.PureComponent {
 		strictOptions: [],
 		onStrictChange: null,
 		difficulty: 0,
-		difficultyOptions: []
+		difficultyOptions: [],
+		onDifficultyChange: null
 	}
 
 	/**
 	 * @constructor
 	 */
-	constructor () {
-		super(...arguments);
+	constructor (props) {
+		super(...props);
 
 		this.onChangeStrict = this.onChangeStrict.bind(this);
+		this.onChangeDifficulty = this.onChangeDifficulty.bind(this);
 	}
 
 	onChangeStrict () {
@@ -44,6 +47,15 @@ export default class OptionsComponent extends React.PureComponent {
 		} = this.props;
 		if (typeof onStrictChange === 'function') {
 			onStrictChange();
+		}
+	}
+
+	onChangeDifficulty (event, { value }) {
+		const {
+			onDifficultyChange
+		} = this.props;
+		if (typeof onDifficultyChange === 'function') {
+			onDifficultyChange(value);
 		}
 	}
 
@@ -58,11 +70,14 @@ export default class OptionsComponent extends React.PureComponent {
 			strict,
 			strictOptions,
 			difficulty,
-			difficultyOptions
+			difficultyOptions,
+			total,
+			valid
 		} = this.props;
 
 		return (
 			<ui.Menu
+				stackable
 			>
 				<ui.Menu.Item
 					header
@@ -74,6 +89,7 @@ export default class OptionsComponent extends React.PureComponent {
 					<ui.Dropdown
 						inline
 						compact
+						floating
 						onChange={this.onChangeStrict}
 						defaultValue={strict.toString()}
 						options={strictOptions}
@@ -84,9 +100,16 @@ export default class OptionsComponent extends React.PureComponent {
 					<ui.Dropdown
 						inline
 						compact
+						floating
+						onChange={this.onChangeDifficulty}
 						defaultValue={difficulty}
 						options={difficultyOptions}
 					/>
+				</ui.Menu.Item>
+				<ui.Menu.Item
+					position="right"
+				>
+					Valides: {valid}/{total}
 				</ui.Menu.Item>
 			</ui.Menu>
 		);

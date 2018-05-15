@@ -10,6 +10,7 @@ export default class WordComponent extends React.PureComponent {
 	 */
 	static propTypes = {
 		strict: PropTypes.bool,
+		difficulty: PropTypes.number,
 		word: PropTypes.shape({
 			loose: PropTypes.string,
 			canton: PropTypes.string,
@@ -26,6 +27,7 @@ export default class WordComponent extends React.PureComponent {
 	 */
 	static defaultProps = {
 		strict: false,
+		difficulty: 2,
 		words: {}
 	}
 
@@ -39,8 +41,7 @@ export default class WordComponent extends React.PureComponent {
 	 * @type {Object}
 	 */
 	state = {
-		value: '',
-		displayed: false
+		value: ''
 	}
 
 	/**
@@ -58,25 +59,11 @@ export default class WordComponent extends React.PureComponent {
 	/**
 	 * @constructor
 	 */
-	constructor () {
-		super(...arguments);
+	constructor (props) {
+		super(...props);
 
 		this.inputRef = React.createRef();
 		this.onChangeValidateWord = this.onChangeValidateWord.bind(this);
-		this.displayWord = this.displayWord.bind(this);
-		this.hideWord = this.hideWord.bind(this);
-	}
-
-	/**
-	 * Invoked immediately after the component's updates are flushed to the DOM. This method is not called for the initial render.
-	 * @protected
-	 * @method componentDidUpdate
-	 * @param  {object}   prevProps  The prev properties of the component
-	 * @param  {object}   prevState  The prev state of the component
-	 * @return {void}
-	 */
-	componentDidUpdate (prevProps, prevState) {
-		// console.log("this.inputRef", this.inputRef);
 	}
 
 	onChangeValidateWord (e) {
@@ -97,75 +84,54 @@ export default class WordComponent extends React.PureComponent {
 		});
 	}
 
-	displayWord () {
-		this.setState({
-			displayed: true
-		});
-	}
-
-	hideWord () {
-		this.setState({
-			displayed: false
-		});
-	}
-
-	getDisplayWordIcon () {
-		const {
-			displayed
-		} = this.state;
-		return (
-			<ui.Icon
-				link
-				size="small"
-				fitted
-				onMouseDown={this.displayWord}
-				onMouseUp={this.hideWord}
-				onBlur={this.hideWord}
-				name={displayed ? 'unhide' : 'hide'}
-			/>
-		);
-	}
-	getValidityIcon () {
+	isValid () {
 		const {
 			word
 		} = this.props;
+		const {
+			value
+		} = this.state;
 
+		return word.validity || !value;
+	}
+
+	getMenu () {
+		const {
+			difficulty,
+			word
+		} = this.props;
 		return (
-			<ui.Icon
-				link
-				size="small"
-				onMouseDown={this.displayWord}
-				onMouseUp={this.hideWord}
-				name={word.validity ? 'check' : 'x'}
-				color={word.validity ? 'green' : 'red'}
-			/>
+			<ui.Dropdown
+				compact
+				button
+				floating
+				icon={(<ui.Icon
+					size="small"
+					fitted
+					name="help"
+				/>)}
+			>
+				<ui.Dropdown.Menu
+					direction="left"
+				>
+					<ui.Dropdown.Item>Lettres: {word.strict.length}</ui.Dropdown.Item>
+					{difficulty <= 2 && (<ui.Dropdown.Item>Canton: {word.canton}</ui.Dropdown.Item>)}
+				</ui.Dropdown.Menu>
+			</ui.Dropdown>
+
 		);
 	}
 
 	render () {
-		const {
-			value,
-			displayed
-		} = this.state;
-		const {
-			word
-		} = this.props;
-
 		return (
 			<ui.Input
 				ref={this.inputRef}
-				transparent
 				type="text"
 				className="text word"
-				value={displayed ? '' : value}
-				focus
+				error={!this.isValid()}
 				onChange={this.onChangeValidateWord}
-				placeholder={displayed ? word.strict : ''}
-			>
-				<input />
-				{this.getValidityIcon()}
-				{this.getDisplayWordIcon()}
-			</ui.Input>
+				action={this.getMenu()}
+			 />
 		);
 	}
 }

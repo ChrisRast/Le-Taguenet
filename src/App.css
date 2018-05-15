@@ -4,15 +4,18 @@
 }
 
 .ui.text,
-.ui.input.text input,
 .ui.text.container {
 	font-family: serif;
+	font-size: 18px;
+	line-height: 1.8;
+}
+
+.ui.input.text input {
+	font-family: serif;
+	padding: .2em .4em;
 }
 
 .space-bottom {
 	margin-bottom: 2rem;
 }
 
-.word {
-	border-bottom: 1px solid rgba(34,36,38,.15);
-}

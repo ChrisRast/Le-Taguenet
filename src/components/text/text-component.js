@@ -72,17 +72,24 @@ export default class TextComponent extends React.PureComponent {
 		} = this.wordIterator.next();
 		const {
 			words,
-			strict
+			strict,
+			difficulty
 		} = this.props;
 		if (value === '') {
 			return null;
 		}
-		return (
-			<WordComponent
-				strict={strict}
-				word={words[value]}
-			/>
-		);
+		const word = words[value];
+		if (word.difficulty > difficulty) {
+			return word.fallback;
+		} else {
+			return (
+				<WordComponent
+					difficulty={difficulty}
+					strict={strict}
+					word={word}
+				/>
+			);
+		}
 	}
 
 	render () {
@@ -99,7 +106,7 @@ export default class TextComponent extends React.PureComponent {
 					hidden
 				/>
 				<div>
-					Il regardait les gens de {this.getNextWord()} bouche {this.getNextWord()} des {this.getNextWord()} profondes barraient sont front bizarre, ce front encadré de magnifiques cheveux {this.getNextWord()}.
+					Il regardait les gens de {this.getNextWord()}, bouche {this.getNextWord()}, des {this.getNextWord()} profondes barrant son front bizarre, ce front encadré de magnifiques cheveux {this.getNextWord()}.
 				</div>
 				<ui.Divider
 					hidden
@@ -111,32 +118,32 @@ export default class TextComponent extends React.PureComponent {
 					hidden
 				/>
 				<div>
-					Il était si {this.getNextWord()} qu'on pouvait croire qu'il ne se {this.getNextWord()} jamais. La couche de crasse était si {this.getNextWord()} que mille {this.getNextWord()} d'eau bouillante n'aurait pu la détacher de la {this.getNextWord()} mains. Il sentait le beurre {this.getNextWord()} et était sec comme un {this.getNextWord()}. Son régal était l'omelette aux l{this.getNextWord()} accompagnée de {this.getNextWord()}
+					Il était si {this.getNextWord()} qu'on pouvait croire qu'il ne se {this.getNextWord()} jamais. La couche de crasse était si {this.getNextWord()} que mille {this.getNextWord()} d'eau bouillante n'auraient pu la détacher de la {this.getNextWord()} mains. Il sentait le beurre {this.getNextWord()} et était sec comme un {this.getNextWord()}. Son régal était l'omelette aux l{this.getNextWord()} accompagnée de {this.getNextWord()}.
 				</div>
 				<ui.Divider
 					hidden
 				/>
 				<div>
-					Il travaillait fort peu. C'était ce qu'on appelle un bras {this.getNextWord()}. On l'accusait de vider {this.getNextWord()} des églises du district. {this.getNextWord()} curieux, il conservait pieusement un tableau représentant Napoléon {this.getNextWord()} {this.getNextWord()} de Saint-Hélène. Le Taguenet était souvent en {this.getNextWord()} aux méchancetés des garçons du village.
+					Il travaillait fort peu. C'était ce qu'on appelle un bras {this.getNextWord()}. On l'accusait de vider {this.getNextWord()} des églises du district. {this.getNextWord()} curieux, il conservait pieusement un tableau représentant Napoléon {this.getNextWord()} {this.getNextWord()} de Sainte-Hélène. Le Taguenet était souvent en {this.getNextWord()} aux méchancetés des garçons du village.
 				</div>
 				<ui.Divider
 					hidden
 				/>
 				<div>
-					C'était la veille de la {this.getNextWord()} et il neigeait. L'{this.getNextWord()} je vous parle était très rigoureux. Le long des canaux, l{this.getNextWord()} n'étaient pas nombreux. {this.getNextWord()} traditionnel de rassemblement du village était {this.getNextWord()} qui longe la rivère, non pas à l'ouest mais à {this.getNextWord()} du cours d'eau.
+					C'était la veille de la {this.getNextWord()} et il neigeait. L'{this.getNextWord()} je vous parle était très rigoureux. Le long des canaux, l{this.getNextWord()} n'étaient pas nombreux. {this.getNextWord()} traditionnel de rassemblement du village était {this.getNextWord()} qui longe la rivière, non pas à l'ouest mais à {this.getNextWord()} du cours d'eau.
 				</div>
 				<ui.Divider
 					hidden
 				/>
 				<div>
-					Ce soir-là, les jeunes remontaient la {this.getNextWord()} principale en chantant à tue-tête: "{this.getNextWord()} a point comme nous". Ils n'arrêtaient pas de se chamailler {this.getNextWord()} les autres quand soudain l'un d'eux ne pu résister à la tenta{this.getNextWord()} d'aller embêter le Taguenet. Alors que le vent se levait, un des plus jeune ironisa, "Quel {this.getNextWord()} il fait !"
+					Ce soir-là, les jeunes remontaient la {this.getNextWord()} principale en chantant à tue-tête : "{this.getNextWord()} a point comme nous". Ils n'arrêtaient pas de se chamailler {this.getNextWord()} les autres quand soudain l'un d'eux ne put résister à la tenta{this.getNextWord()} d'aller embêter le Taguenet. Alors que le vent se levait, un des plus jeune ironisa, "Quel {this.getNextWord()} il fait !"
 					- Si tu manques de {this.getNextWord()}, reste à la maison, répliqua le chef. A ton âge on {this.getNextWord()} de la bise !
 				</div>
 				<ui.Divider
 					hidden
 				/>
 				<div>
-					La bande a_rivaz au moment où le Taguenet sortait de sa maison. Aussitôt ils entourèrent le vieux bougre. "Vend-moi ton chapeau. Il fait froid, {this.getNextWord()} prix" rigola le chef. "Viens le prendre, jeune {this.getNextWord()}, répliqua le Taguenet. Et ce fut la bagarre. Mais soudain, le Taguenet s'affaissa. "Oh, {this.getNextWord()}, gémit-il en se tenant le bas du dos, je crois que j'ai le _bassins brisé, bande de m{this.getNextWord()} !
+					La bande a{this.getNextWord()} au moment où le Taguenet sortait de sa maison. Aussitôt ils entourèrent le vieux bougre. "Vends-moi ton chapeau. Il fait froid, {this.getNextWord()} prix" rigola le chef. "Viens le prendre, jeune {this.getNextWord()}, répliqua le Taguenet. Et ce fut la bagarre. Mais soudain, le Taguenet s'affaissa. "Oh, {this.getNextWord()}, gémit-il en se tenant le bas du dos, je crois que j'ai le {this.getNextWord()} brisé, bande de m{this.getNextWord()} !
 				</div>
 				<ui.Divider
 					hidden
