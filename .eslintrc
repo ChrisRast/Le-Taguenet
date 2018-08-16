@@ -9,6 +9,10 @@
     "react/sort-comp": 0,
     "indent": [1, "tab"],
     "max-len": 0,
-    "no-console": ["warn", { "allow": ["warn", "error"] }]
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "comma-dangle": [
+      "warn",
+      "always-multiline"
+    ]
   }
 }

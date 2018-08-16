@@ -4,7 +4,7 @@ import './App.css';
 import ROUTES from './config/routes';
 import {
 	Header,
-	Footer
+	Footer,
 } from './components/nav';
 import NotFound from './components/not-found';
 import NavContainer from './containers/nav-container';
@@ -17,7 +17,7 @@ export default class App extends React.Component {
 	renderRoute (route, index) {
 		const {
 			path,
-			routing
+			routing,
 		} = route;
 		const {
 			component = null,
