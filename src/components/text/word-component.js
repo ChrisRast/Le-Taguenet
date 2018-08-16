@@ -51,18 +51,11 @@ export default class WordComponent extends React.PureComponent {
 	typing = false;
 
 	/**
-	 * Reference of the input
-	 * @type {Object}
-	 */
-	inputRef = null;
-
-	/**
 	 * @constructor
 	 */
 	constructor (props) {
 		super(...props);
 
-		this.inputRef = React.createRef();
 		this.onChangeValidateWord = this.onChangeValidateWord.bind(this);
 	}
 
@@ -100,38 +93,59 @@ export default class WordComponent extends React.PureComponent {
 			difficulty,
 			word
 		} = this.props;
+		const {
+			value
+		} = this.state;
+
 		return (
 			<ui.Dropdown
+				basic
 				compact
 				button
-				floating
 				icon={(<ui.Icon
 					size="small"
 					fitted
 					name="help"
 				/>)}
+				style={{
+					margin: '0',
+					padding: '.58928571em .58928571em'
+				}}
 			>
 				<ui.Dropdown.Menu
 					direction="left"
 				>
-					<ui.Dropdown.Item>Lettres: {word.strict.length}</ui.Dropdown.Item>
-					{difficulty <= 2 && (<ui.Dropdown.Item>Canton: {word.canton}</ui.Dropdown.Item>)}
+					<ui.Dropdown.Item>
+						Lettres: {value.length}/{word.strict.length}
+					</ui.Dropdown.Item>
+					{difficulty <= 2 && (
+						<ui.Dropdown.Item>Canton: {word.canton}</ui.Dropdown.Item>
+					)}
 				</ui.Dropdown.Menu>
 			</ui.Dropdown>
-
 		);
 	}
 
 	render () {
+		const {
+			word
+		} = this.props;
+
 		return (
 			<ui.Input
-				ref={this.inputRef}
 				type="text"
 				className="text word"
 				error={!this.isValid()}
 				onChange={this.onChangeValidateWord}
-				action={this.getMenu()}
-			 />
+			>
+				<input
+					className={word.compact && 'compact'}
+					style={{
+						width: `calc(${word.strict.length}ch + ${word.compact ? '.2' : '.8'}em)`
+					}}
+				/>
+				{this.getMenu()}
+			</ui.Input>
 		);
 	}
 }

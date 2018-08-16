@@ -12,7 +12,10 @@
 
 .ui.input.text input {
 	font-family: serif;
-	padding: .2em .4em;
+	padding: .1em .3em;
+}
+.ui.input.text input.compact {
+	padding: .1em 0em;
 }
 
 .space-bottom {
