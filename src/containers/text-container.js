@@ -41,12 +41,12 @@ export default class TextContainer extends React.PureComponent {
 	}
 
 	/**
-	 * Invoked once, both on the client and server, immediately before the initial rendering occurs.
+	 * Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
 	 * @protected
-	 * @method componentWillMount
+	 * @method componentDidMount
 	 * @return {void}
 	 */
-	componentWillMount () {
+	componentDidMount () {
 		this.initState();
 	}
 

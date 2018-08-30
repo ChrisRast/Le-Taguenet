@@ -34,42 +34,45 @@ export default class TextComponent extends React.PureComponent {
 		difficulty: 0,
 	}
 
-	wordIterator = null;
+	static getDerivedStateFromProps (props) {
+		return TextComponent.getWordIterator(props);
+	}
+
+	static getWordIterator (props) {
+		const {
+			words,
+		} = props;
+		return {
+			wordIterator: Object.keys(words)[Symbol.iterator](),
+		};
+	}
+
+	/**
+	 * Default state of the component
+	 * @protected
+	 * @type {Object}
+	 * @property {[type]} name desc
+	 */
+	state = {
+		wordIterator: null,
+	};
 
 	wordsRef = {};
 
 	/**
-	 * Invoked once, both on the client and server, immediately before the initial rendering occurs.
+	 * Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
 	 * @protected
-	 * @method componentWillMount
+	 * @method componentDidMount
 	 * @return {void}
 	 */
-	componentWillMount () {
-		this.setWordIterator();
-	}
-
-	/**
-	 * Invoked when a component is receiving new props. This method is not called for the initial render.
-	 * @protected
-	 * @method componentWillReceiveProps
-	 * @param  {object}   nextProps  The next properties of the component
-	 * @return {void}
-	 */
-	componentWillReceiveProps (nextProps) {
-		this.setWordIterator();
-	}
-
-	setWordIterator () {
-		const {
-			words,
-		} = this.props;
-		this.wordIterator = Object.keys(words)[Symbol.iterator]();
+	componentDidMount () {
+		this.setState(TextComponent.getWordIterator(this.props));
 	}
 
 	getNextWord () {
 		const {
 			value = '',
-		} = this.wordIterator.next();
+		} = this.state.wordIterator.next();
 		const {
 			words,
 			strict,
@@ -93,7 +96,7 @@ export default class TextComponent extends React.PureComponent {
 	}
 
 	render () {
-		return (
+		return this.state.wordIterator && (
 			<ui.Container
 				text
 				textAlign="left"
