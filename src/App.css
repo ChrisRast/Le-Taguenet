@@ -3,9 +3,10 @@
   margin: 2rem auto;
 }
 
-.ui.text,
+.ui.text {
+	font-family: serif !important;
+}
 .ui.text.container {
-	font-family: serif;
 	font-size: 18px;
 	line-height: 1.8;
 }
