@@ -4,7 +4,7 @@ import TextComponent from './../components/text/text-component';
 import wordsData from '../data/words';
 import {
 	difficulty,
-	validation
+	validation,
 } from '../data/labels';
 import accents from 'remove-accents';
 import * as ui from 'semantic-ui-react';
@@ -12,7 +12,7 @@ import OptionsComponent from './../components/text/options-component';
 
 export default class TextContainer extends React.PureComponent {
 	static childContextTypes = {
-		validateWord: PropTypes.func
+		validateWord: PropTypes.func,
 	}
 
 	/**
@@ -23,7 +23,7 @@ export default class TextContainer extends React.PureComponent {
 	state = {
 		strict: true,
 		difficulty: 2,
-		words: {}
+		words: {},
 	}
 
 	/**
@@ -70,28 +70,28 @@ export default class TextContainer extends React.PureComponent {
 				...word,
 				input: '',
 				loose: key,
-				validity: false
+				validity: false,
 			};
 		});
 		this.setState({
-			words: newWords
+			words: newWords,
 		});
 	}
 
 	getChildContext () {
 		return {
-			validateWord: this.validateWord.bind(this)
+			validateWord: this.validateWord.bind(this),
 		};
 	}
 
 	validateWord (newInputValue, word) {
 		const {
-			strict
+			strict,
 		} = this.state;
 		const {
 			input: oldInputValue,
 			strict: strictLabel,
-			validity: wordValidity
+			validity: wordValidity,
 		} = word;
 		let newValidity = false;
 
@@ -114,7 +114,7 @@ export default class TextContainer extends React.PureComponent {
 
 	validateAllWords () {
 		const {
-			words
+			words,
 		} = this.state;
 		Object.keys(words).forEach((key) => {
 			this.validateWord(words[key].input, words[key]);
@@ -123,16 +123,16 @@ export default class TextContainer extends React.PureComponent {
 
 	updateStateWordsValidity (key, validity, inputValue) {
 		const {
-			words
+			words,
 		} = this.state;
 		const newWords = Object.assign({}, words);
 		newWords[key] = {
 			...newWords[key],
 			input: inputValue,
-			validity: Boolean(validity)
+			validity: Boolean(validity),
 		};
 		this.setState({
-			words: newWords
+			words: newWords,
 		});
 	}
 
@@ -144,7 +144,7 @@ export default class TextContainer extends React.PureComponent {
 	 */
 	countValid () {
 		const {
-			words
+			words,
 		} = this.state;
 		return (Object.values(words).filter((word) => {
 			return word.validity;
@@ -153,7 +153,7 @@ export default class TextContainer extends React.PureComponent {
 
 	countTotalWords (words = this.state.words) {
 		const {
-			difficulty
+			difficulty,
 		} = this.state;
 
 		return (Object.values(words).filter((word) => {
@@ -163,33 +163,33 @@ export default class TextContainer extends React.PureComponent {
 
 	toggleStrict () {
 		const {
-			strict
+			strict,
 		} = this.state;
 
 		this.setState({
-			strict: !strict
+			strict: !strict,
 		});
 	}
 
 	changeDifficulty (value) {
 		const {
-			difficulty
+			difficulty,
 		} = this.state;
 		if (difficulty !== value) {
 			this.setState({
-				difficulty: value
+				difficulty: value,
 			});
 		}
 	}
 
 	getDifficultyOptions () {
 		const {
-			words
+			words,
 		} = this.state;
 		const options = [0];
 		Object.keys(words).forEach((key) => {
 			const {
-				difficulty
+				difficulty,
 			} = words[key];
 			if (difficulty !== 0 && !options.includes(difficulty)) {
 				options.push(difficulty);
@@ -198,7 +198,7 @@ export default class TextContainer extends React.PureComponent {
 		return options.sort().map((val) => {
 			return {
 				text: difficulty[val],
-				value: val
+				value: val,
 			};
 		});
 	}
@@ -207,7 +207,7 @@ export default class TextContainer extends React.PureComponent {
 		return Object.keys(validation).map((key) => {
 			return {
 				text: validation[key],
-				value: key
+				value: key,
 			};
 		});
 	}
@@ -216,7 +216,7 @@ export default class TextContainer extends React.PureComponent {
 		const {
 			strict,
 			words,
-			difficulty
+			difficulty,
 		} = this.state;
 		return (
 			<ui.Container>

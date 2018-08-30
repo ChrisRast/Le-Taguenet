@@ -14,12 +14,12 @@ export default class NavMenu extends React.Component {
 		routes: PropTypes.arrayOf(PropTypes.shape({
 			path: PropTypes.string,
 			menu: PropTypes.shape({
-				label: PropTypes.string
+				label: PropTypes.string,
 			}),
 			routing: PropTypes.shape({
-				component: PropTypes.func
-			})
-		}))
+				component: PropTypes.func,
+			}),
+		})),
 	}
 
 	/**
@@ -28,7 +28,7 @@ export default class NavMenu extends React.Component {
 	 * @type {object}
 	 */
 	static defaultProps = {
-		routes: []
+		routes: [],
 	}
 
 	/**
@@ -40,7 +40,7 @@ export default class NavMenu extends React.Component {
 	 */
 	goTo (path) {
 		const {
-			history
+			history,
 		} = this.props;
 		history.push(path);
 	}
@@ -48,15 +48,15 @@ export default class NavMenu extends React.Component {
 	getRoutesNavLink () {
 		const {
 			routes,
-			location
+			location,
 		} = this.props;
 		return routes.map((route, index) => {
 			const {
 				path,
-				menu
+				menu,
 			} = route;
 			const {
-				label
+				label,
 			} = menu;
 			return (
 				<ui.Menu.Item

@@ -5,11 +5,11 @@ export default function Header (props) {
 	return (
 		<ui.Header
 			textAlign="center"
-			as="h1"
 			className="space-bottom"
-			size="huge"
 		>
 			<ui.Header.Content
+				as="h1"
+				size="huge"
 				className="ui text"
 			>
 				Le Taguenet

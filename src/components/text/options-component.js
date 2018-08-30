@@ -14,7 +14,7 @@ export default class OptionsComponent extends React.PureComponent {
 		onStrictChange: PropTypes.func,
 		difficulty: PropTypes.number,
 		difficultyOptions: PropTypes.arrayOf(PropTypes.object),
-		onDifficultyChange: PropTypes.func
+		onDifficultyChange: PropTypes.func,
 	}
 
 	/**
@@ -28,7 +28,7 @@ export default class OptionsComponent extends React.PureComponent {
 		onStrictChange: null,
 		difficulty: 0,
 		difficultyOptions: [],
-		onDifficultyChange: null
+		onDifficultyChange: null,
 	}
 
 	/**
@@ -43,7 +43,7 @@ export default class OptionsComponent extends React.PureComponent {
 
 	onChangeStrict () {
 		const {
-			onStrictChange
+			onStrictChange,
 		} = this.props;
 		if (typeof onStrictChange === 'function') {
 			onStrictChange();
@@ -52,7 +52,7 @@ export default class OptionsComponent extends React.PureComponent {
 
 	onChangeDifficulty (event, { value }) {
 		const {
-			onDifficultyChange
+			onDifficultyChange,
 		} = this.props;
 		if (typeof onDifficultyChange === 'function') {
 			onDifficultyChange(value);
@@ -72,7 +72,7 @@ export default class OptionsComponent extends React.PureComponent {
 			difficulty,
 			difficultyOptions,
 			total,
-			valid
+			valid,
 		} = this.props;
 
 		return (

@@ -16,8 +16,8 @@ export default class WordComponent extends React.PureComponent {
 			canton: PropTypes.string,
 			difficulty: PropTypes.number,
 			strict: PropTypes.string,
-			validity: PropTypes.bool
-		}).isRequired
+			validity: PropTypes.bool,
+		}).isRequired,
 	}
 
 	/**
@@ -28,11 +28,11 @@ export default class WordComponent extends React.PureComponent {
 	static defaultProps = {
 		strict: false,
 		difficulty: 2,
-		words: {}
+		words: {},
 	}
 
 	static contextTypes = {
-		validateWord: PropTypes.func
+		validateWord: PropTypes.func,
 	}
 
 	/**
@@ -41,7 +41,7 @@ export default class WordComponent extends React.PureComponent {
 	 * @type {Object}
 	 */
 	state = {
-		value: ''
+		value: '',
 	}
 
 	/**
@@ -61,28 +61,28 @@ export default class WordComponent extends React.PureComponent {
 
 	onChangeValidateWord (e) {
 		const {
-			validateWord
+			validateWord,
 		} = this.context;
 		const {
-			word
+			word,
 		} = this.props;
 		const {
-			value
+			value,
 		} = e.target;
 		if (typeof validateWord === 'function') {
 			validateWord(value, word);
 		}
 		this.setState({
-			value
+			value,
 		});
 	}
 
 	isValid () {
 		const {
-			word
+			word,
 		} = this.props;
 		const {
-			value
+			value,
 		} = this.state;
 
 		return word.validity || !value;
@@ -91,10 +91,10 @@ export default class WordComponent extends React.PureComponent {
 	getMenu () {
 		const {
 			difficulty,
-			word
+			word,
 		} = this.props;
 		const {
-			value
+			value,
 		} = this.state;
 
 		return (
@@ -109,7 +109,7 @@ export default class WordComponent extends React.PureComponent {
 				/>)}
 				style={{
 					margin: '0',
-					padding: '.58928571em .58928571em'
+					padding: '.58928571em .58928571em',
 				}}
 			>
 				<ui.Dropdown.Menu
@@ -128,7 +128,7 @@ export default class WordComponent extends React.PureComponent {
 
 	render () {
 		const {
-			word
+			word,
 		} = this.props;
 
 		return (
@@ -141,7 +141,7 @@ export default class WordComponent extends React.PureComponent {
 				<input
 					className={word.compact && 'compact'}
 					style={{
-						width: `calc(${word.strict.length}ch + ${word.compact ? '.2' : '.8'}em)`
+						width: `calc(${word.strict.length}ch + ${word.compact ? '.2' : '.8'}em)`,
 					}}
 				/>
 				{this.getMenu()}

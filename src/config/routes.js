@@ -7,37 +7,37 @@ export default [
 	{
 		path: '/',
 		menu: {
-			label: 'Home'
+			label: 'Home',
 		},
 		routing: {
-			component: Home
-		}
+			component: Home,
+		},
 	},
 	{
 		path: '/texte',
 		menu: {
-			label: 'Le texte'
+			label: 'Le texte',
 		},
 		routing: {
-			component: Text
-		}
+			component: Text,
+		},
 	},
 	{
 		path: '/a-propos',
 		menu: {
-			label: 'À propos'
+			label: 'À propos',
 		},
 		routing: {
-			component: About
-		}
+			component: About,
+		},
 	},
 	{
 		path: '/contact',
 		menu: {
-			label: 'Contact'
+			label: 'Contact',
 		},
 		routing: {
-			component: Contact
-		}
-	}
+			component: Contact,
+		},
+	},
 ];

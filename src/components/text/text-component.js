@@ -18,9 +18,9 @@ export default class TextComponent extends React.PureComponent {
 				canton: PropTypes.string,
 				difficulty: PropTypes.number,
 				strict: PropTypes.string,
-				validity: PropTypes.bool
+				validity: PropTypes.bool,
 			})
-		)
+		),
 	}
 
 	/**
@@ -31,7 +31,7 @@ export default class TextComponent extends React.PureComponent {
 	static defaultProps = {
 		strict: false,
 		words: {},
-		difficulty: 0
+		difficulty: 0,
 	}
 
 	wordIterator = null;
@@ -61,19 +61,19 @@ export default class TextComponent extends React.PureComponent {
 
 	setWordIterator () {
 		const {
-			words
+			words,
 		} = this.props;
 		this.wordIterator = Object.keys(words)[Symbol.iterator]();
 	}
 
 	getNextWord () {
 		const {
-			value = ''
+			value = '',
 		} = this.wordIterator.next();
 		const {
 			words,
 			strict,
-			difficulty
+			difficulty,
 		} = this.props;
 		if (value === '') {
 			return null;
