@@ -2,13 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextComponent from './../components/text/text-component';
 import wordsData from '../data/words';
-import {
-	difficulty,
-	validation,
-} from '../data/labels';
+import * as labels from '../data/labels';
 import accents from 'remove-accents';
 import * as ui from 'semantic-ui-react';
 import OptionsComponent from './../components/text/options-component';
+import * as params from '../config/params';
 
 export default class TextContainer extends React.PureComponent {
 	static childContextTypes = {
@@ -21,8 +19,8 @@ export default class TextContainer extends React.PureComponent {
 	 * @type {Object}
 	 */
 	state = {
-		strict: true,
-		difficulty: 2,
+		strict: false,
+		difficulty: 0,
 		words: {},
 	}
 
@@ -63,6 +61,10 @@ export default class TextContainer extends React.PureComponent {
 	}
 
 	initState () {
+		const {
+			strict,
+			difficulty,
+		} = params;
 		let newWords = {};
 		Object.keys(wordsData).forEach((key) => {
 			const word = wordsData[key];
@@ -74,6 +76,8 @@ export default class TextContainer extends React.PureComponent {
 			};
 		});
 		this.setState({
+			strict,
+			difficulty,
 			words: newWords,
 		});
 	}
@@ -197,16 +201,16 @@ export default class TextContainer extends React.PureComponent {
 		});
 		return options.sort().map((val) => {
 			return {
-				text: difficulty[val],
+				text: labels.difficulty[val],
 				value: val,
 			};
 		});
 	}
 
 	getValidationOptions () {
-		return Object.keys(validation).map((key) => {
+		return Object.keys(labels.validation).map((key) => {
 			return {
-				text: validation[key],
+				text: labels.validation[key],
 				value: key,
 			};
 		});

@@ -18,6 +18,9 @@
 .ui.input.text input.compact {
 	padding: .1em 0em;
 }
+.ui.input.text input::placeholder {
+	color: rgb(0,0,0);
+}
 
 .space-bottom {
 	margin-bottom: 2rem;

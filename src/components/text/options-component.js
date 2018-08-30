@@ -15,6 +15,8 @@ export default class OptionsComponent extends React.PureComponent {
 		difficulty: PropTypes.number,
 		difficultyOptions: PropTypes.arrayOf(PropTypes.object),
 		onDifficultyChange: PropTypes.func,
+		total: PropTypes.number,
+		valid: PropTypes.number,
 	}
 
 	/**
@@ -29,6 +31,8 @@ export default class OptionsComponent extends React.PureComponent {
 		difficulty: 0,
 		difficultyOptions: [],
 		onDifficultyChange: null,
+		total: 0,
+		valid: 0,
 	}
 
 	/**
@@ -91,7 +95,7 @@ export default class OptionsComponent extends React.PureComponent {
 						compact
 						floating
 						onChange={this.onChangeStrict}
-						defaultValue={strict.toString()}
+						value={strict.toString()}
 						options={strictOptions}
 					/>
 				</ui.Menu.Item>
@@ -102,7 +106,7 @@ export default class OptionsComponent extends React.PureComponent {
 						compact
 						floating
 						onChange={this.onChangeDifficulty}
-						defaultValue={difficulty}
+						value={difficulty}
 						options={difficultyOptions}
 					/>
 				</ui.Menu.Item>

@@ -82,17 +82,14 @@ export default class TextComponent extends React.PureComponent {
 			return null;
 		}
 		const word = words[value];
-		if (word.difficulty > difficulty) {
-			return word.fallback;
-		} else {
-			return (
-				<WordComponent
-					difficulty={difficulty}
-					strict={strict}
-					word={word}
-				/>
-			);
-		}
+
+		return (
+			<WordComponent
+				difficulty={difficulty}
+				strict={strict}
+				word={word}
+			/>
+		);
 	}
 
 	render () {

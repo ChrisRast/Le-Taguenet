@@ -126,6 +126,20 @@ export default class WordComponent extends React.PureComponent {
 		);
 	}
 
+	getInputPlaceholder () {
+		const {
+			word,
+			difficulty,
+		} = this.props;
+		const diff = word.difficulty - difficulty;
+
+		if (diff > -1) {
+			return word.strict.substring(0, diff);
+		} else {
+			return '';
+		}
+	}
+
 	render () {
 		const {
 			word,
@@ -143,6 +157,7 @@ export default class WordComponent extends React.PureComponent {
 					style={{
 						width: `calc(${word.strict.length}ch + ${word.compact ? '.2' : '.8'}em)`,
 					}}
+					placeholder={this.getInputPlaceholder()}
 				/>
 				{this.getMenu()}
 			</ui.Input>
