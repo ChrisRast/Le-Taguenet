@@ -97,7 +97,7 @@ export default class TextComponent extends React.PureComponent {
 			<ui.Container
 				text
 				textAlign="left"
-				className="text space-bottom"
+				className="serif space-bottom"
 			>
 				<div>
 					Le Taguenet était un curieux bonhomme. Il était le {this.getNextWord()} né d'une famille de dix enfants. À l'école il n'était pas un {this.getNextWord()} mathématique. Et il n'avait {this.getNextWord()} dans sa poche.

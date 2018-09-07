@@ -3,8 +3,8 @@ import Contact from '../containers/contact-container';
 import About from '../containers/about-container';
 import Home from '../containers/home-container';
 
-export default [
-	{
+export const ROUTES = {
+	home: {
 		path: '/',
 		menu: {
 			label: 'Home',
@@ -13,7 +13,7 @@ export default [
 			component: Home,
 		},
 	},
-	{
+	text: {
 		path: '/texte',
 		menu: {
 			label: 'Le texte',
@@ -22,7 +22,7 @@ export default [
 			component: Text,
 		},
 	},
-	{
+	about: {
 		path: '/a-propos',
 		menu: {
 			label: 'À propos',
@@ -31,7 +31,7 @@ export default [
 			component: About,
 		},
 	},
-	{
+	contact: {
 		path: '/contact',
 		menu: {
 			label: 'Contact',
@@ -40,4 +40,6 @@ export default [
 			component: Contact,
 		},
 	},
-];
+};
+
+export const ROUTES_VALUES = Object.values(ROUTES);

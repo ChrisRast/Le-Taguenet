@@ -1,5 +1,5 @@
 import React from 'react';
-import ROUTES from './config/routes';
+import { ROUTES_VALUES } from './config/routes';
 import {
 	Header,
 	Footer,
@@ -37,14 +37,14 @@ export default class App extends React.Component {
 			<div className="App">
 				<Header />
 				<NavMenuWithRouter
-					routes={ROUTES}
+					routes={ROUTES_VALUES}
 				/>
 				<ui.Container
 					className="content"
 					text
 				>
 					<r.Switch>
-						{ROUTES.map(this.renderRoute)}
+						{ROUTES_VALUES.map(this.renderRoute)}
 						<r.Route component={NotFound}/>
 					</r.Switch>
 				</ui.Container>
