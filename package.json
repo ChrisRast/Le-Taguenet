@@ -22,7 +22,7 @@
     "react-scripts": "1.1.5",
     "remove-accents": "^0.4.2",
     "semantic-ui-css": "^2.3.3",
-    "semantic-ui-react": "^0.82.3"
+    "semantic-ui-react": "^0.84.0"
   },
   "devDependencies": {
     "eslint-config-react": "https://github.com/oquis/eslint-config-react.git#eslint-2-migration",
