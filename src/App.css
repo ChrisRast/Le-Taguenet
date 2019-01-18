@@ -26,3 +26,6 @@
 	margin-bottom: 4rem;
 }
 
+.rotate-45 {
+	transform: rotate(45deg);
+}

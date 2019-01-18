@@ -22,7 +22,10 @@ export default class TextContainer extends React.PureComponent {
 		strict: false,
 		difficulty: 0,
 		words: {},
+		sticky: true,
 	}
+
+	refWrapper = null;
 
 	/**
 	 * Class constructor
@@ -35,7 +38,9 @@ export default class TextContainer extends React.PureComponent {
 		super(props);
 
 		this.toggleStrict = this.toggleStrict.bind(this);
+		this.toggleSticky = this.toggleSticky.bind(this);
 		this.changeDifficulty = this.changeDifficulty.bind(this);
+		this.storeWrapperRef = this.storeWrapperRef.bind(this);
 	}
 
 	/**
@@ -169,6 +174,16 @@ export default class TextContainer extends React.PureComponent {
 		});
 	}
 
+	toggleSticky () {
+		const {
+			sticky,
+		} = this.state;
+		console.log("sticky", sticky);
+		this.setState({
+			sticky: !sticky,
+		});
+	}
+
 	changeDifficulty (value) {
 		const {
 			difficulty,
@@ -198,30 +213,44 @@ export default class TextContainer extends React.PureComponent {
 		});
 	}
 
+	storeWrapperRef (ref) {
+		this.refWrapper = ref;
+	}
+
 	render () {
 		const {
 			strict,
 			words,
 			difficulty,
+			sticky,
 		} = this.state;
 		return (
-			<React.Fragment>
-				<OptionsComponent
-					strict={strict}
-					strictOptions={this.getValidationOptions()}
-					onStrictChange={this.toggleStrict}
-					difficulty={difficulty}
-					difficultyOptions={this.getDifficultyOptions()}
-					onDifficultyChange={this.changeDifficulty}
-					total={this.countTotalWords()}
-					valid={this.countValid()}
-				/>
+			<div
+				ref={this.storeWrapperRef}
+			>
+				<ui.Sticky
+					context={this.refWrapper}
+					active={sticky}
+				>
+					<OptionsComponent
+						strict={strict}
+						strictOptions={this.getValidationOptions()}
+						onStrictChange={this.toggleStrict}
+						difficulty={difficulty}
+						difficultyOptions={this.getDifficultyOptions()}
+						onDifficultyChange={this.changeDifficulty}
+						total={this.countTotalWords()}
+						valid={this.countValid()}
+						sticked={sticky}
+						onStickyChange={this.toggleSticky}
+					/>
+				</ui.Sticky>
 				<TextComponent
 					strict={strict}
 					words={words}
 					difficulty={difficulty}
 				/>
-			</React.Fragment>
+			</div>
 		);
 	}
 }

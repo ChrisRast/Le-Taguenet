@@ -17,6 +17,8 @@ export default class OptionsComponent extends React.PureComponent {
 		onDifficultyChange: PropTypes.func,
 		total: PropTypes.number,
 		valid: PropTypes.number,
+		sticked: PropTypes.bool,
+		onStickyChange: PropTypes.func,
 	}
 
 	/**
@@ -33,6 +35,8 @@ export default class OptionsComponent extends React.PureComponent {
 		onDifficultyChange: null,
 		total: 0,
 		valid: 0,
+		sticked: true,
+		onStickyChange: null,
 	}
 
 	/**
@@ -81,6 +85,8 @@ export default class OptionsComponent extends React.PureComponent {
 			difficultyOptions,
 			total,
 			valid,
+			sticked,
+			onStickyChange,
 		} = this.props;
 
 		return (
@@ -119,11 +125,24 @@ export default class OptionsComponent extends React.PureComponent {
 							options={difficultyOptions}
 						/>
 					</ui.Menu.Item>
-					<ui.Menu.Item
+					<ui.Menu.Menu
 						position="right"
 					>
-					Valides: {valid}/{total}
-					</ui.Menu.Item>
+						<ui.Menu.Item>
+							Valides: {valid}/{total}
+						</ui.Menu.Item>
+						<ui.Menu.Item
+							position="right"
+							onClick={onStickyChange}
+							icon={(
+								<ui.Icon
+									name="pin"
+									title={sticked ? 'Attacher les options en haut' : 'Détacher les options'}
+									className={sticked ? 'rotate-45' : ''}
+								/>
+							)}
+						/>
+					</ui.Menu.Menu>
 				</ui.Menu>
 			</ui.Container>
 		);
