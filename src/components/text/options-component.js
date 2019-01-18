@@ -80,42 +80,48 @@ export default class OptionsComponent extends React.PureComponent {
 		} = this.props;
 
 		return (
-			<ui.Menu
-				stackable
+			<ui.Container
+				text
+				className="space-bottom"
 			>
-				<ui.Menu.Item
-					header
+				<ui.Menu
+					stackable
 				>
-					Options&nbsp;:
-				</ui.Menu.Item>
-				<ui.Menu.Item>
+					<ui.Menu.Item
+						header
+					>
+						<ui.Icon name="options" />
+						Paramètres&nbsp;:
+					</ui.Menu.Item>
+					<ui.Menu.Item>
 					Orthographe&nbsp;:&nbsp;
-					<ui.Dropdown
-						inline
-						compact
-						floating
-						onChange={this.onChangeStrict}
-						value={strict.toString()}
-						options={strictOptions}
-					/>
-				</ui.Menu.Item>
-				<ui.Menu.Item>
+						<ui.Dropdown
+							inline
+							compact
+							floating
+							onChange={this.onChangeStrict}
+							value={strict.toString()}
+							options={strictOptions}
+						/>
+					</ui.Menu.Item>
+					<ui.Menu.Item>
 					Difficulté&nbsp;:&nbsp;
-					<ui.Dropdown
-						inline
-						compact
-						floating
-						onChange={this.onChangeDifficulty}
-						value={difficulty}
-						options={difficultyOptions}
-					/>
-				</ui.Menu.Item>
-				<ui.Menu.Item
-					position="right"
-				>
+						<ui.Dropdown
+							inline
+							compact
+							floating
+							onChange={this.onChangeDifficulty}
+							value={difficulty}
+							options={difficultyOptions}
+						/>
+					</ui.Menu.Item>
+					<ui.Menu.Item
+						position="right"
+					>
 					Valides: {valid}/{total}
-				</ui.Menu.Item>
-			</ui.Menu>
+					</ui.Menu.Item>
+				</ui.Menu>
+			</ui.Container>
 		);
 	}
 }

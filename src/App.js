@@ -7,7 +7,6 @@ import {
 import NotFound from './components/not-found';
 import NavContainer from './containers/nav-container';
 import * as r from 'react-router-dom';
-import * as ui from 'semantic-ui-react';
 
 const NavMenuWithRouter = r.withRouter(NavContainer);
 
@@ -39,15 +38,10 @@ export default class App extends React.Component {
 				<NavMenuWithRouter
 					routes={ROUTES_VALUES}
 				/>
-				<ui.Container
-					className="content"
-					text
-				>
-					<r.Switch>
-						{ROUTES_VALUES.map(this.renderRoute)}
-						<r.Route component={NotFound}/>
-					</r.Switch>
-				</ui.Container>
+				<r.Switch>
+					{ROUTES_VALUES.map(this.renderRoute)}
+					<r.Route component={NotFound}/>
+				</r.Switch>
 				<Footer />
 			</div>
 		);

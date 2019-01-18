@@ -223,7 +223,7 @@ export default class TextContainer extends React.PureComponent {
 			difficulty,
 		} = this.state;
 		return (
-			<ui.Container>
+			<React.Fragment>
 				<OptionsComponent
 					strict={strict}
 					strictOptions={this.getValidationOptions()}
@@ -239,7 +239,7 @@ export default class TextContainer extends React.PureComponent {
 					words={words}
 					difficulty={difficulty}
 				/>
-			</ui.Container>
+			</React.Fragment>
 		);
 	}
 }

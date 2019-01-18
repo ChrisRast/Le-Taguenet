@@ -13,7 +13,7 @@ export default class Home extends React.PureComponent {
 					Bienvenus sur Le Taguenet !
 				</ui.Header>
 				<p>
-					Ce site a été dévelopé pour vous permettre de compléter le texte lacunaire homonyme à l'ère numérique.
+					Ce site a été dévelopé pour vous permettre de compléter le texte lacunaire homonyme à l'ère du numérique.
 				</p>
 				<p>
 					Pour essayer de trouver tous les mots, rendez-vous sur <r.Link to={ROUTES['text'].path}>le texte</r.Link>.
@@ -26,7 +26,25 @@ export default class Home extends React.PureComponent {
 						rel="noopener external nofollow noreferrer"
 					>
 						front-end
-					</a>
+					</a> utilisant les librairies <a
+						href="https://reactjs.org/"
+						target="_blank"
+						rel="noopener external nofollow noreferrer"
+					>
+						React
+					</a>, <a
+						href="https://reacttraining.com/react-router/"
+						target="_blank"
+						rel="noopener external nofollow noreferrer"
+					>
+						React-Router
+					</a> et <a
+						href="https://semantic-ui.com/"
+						target="_blank"
+						rel="noopener external nofollow noreferrer"
+					>
+						Semantic-UI
+					</a>.
 					.
 				</p>
 			</ui.Container>
