@@ -1,7 +1,7 @@
 export default {
 	"premier": {
 		strict: 'Premier',
-		canton: 'XXX',
+		canton: 'Vaud',
 		difficulty: 2,
 		fallback: 'premier',
 	},
@@ -25,7 +25,7 @@ export default {
 	},
 	"bex": {
 		strict: 'Bex',
-		canton: 'Valais',
+		canton: 'Vaud',
 		difficulty: 1,
 		fallback: 'bée',
 	},

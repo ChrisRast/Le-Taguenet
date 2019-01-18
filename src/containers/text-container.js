@@ -103,8 +103,8 @@ export default class TextContainer extends React.PureComponent {
 			if (strict) {
 				newValidity = newInputValue === strictLabel;
 			} else {
-				const normalizedWord = accents.remove(newInputValue).toUpperCase();
-				const normalizedStrict = accents.remove(strictLabel).toUpperCase();
+				const normalizedWord = accents.remove(newInputValue).toUpperCase().replace(/\s|\W/gi, '');
+				const normalizedStrict = accents.remove(strictLabel).toUpperCase().replace(/\s|\W/gi, '');
 
 				newValidity = normalizedWord === normalizedStrict;
 			}
