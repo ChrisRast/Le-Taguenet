@@ -136,7 +136,7 @@ export default class TextComponent extends React.PureComponent {
 					hidden
 				/>
 				<div>
-					Ce soir-là, les jeunes remontaient la {this.getNextWord()} principale en chantant à tue-tête : "{this.getNextWord()} a point comme nous". Ils n'arrêtaient pas de se chamailler {this.getNextWord()} les autres quand soudain l'un d'eux ne put résister à la tenta{this.getNextWord()} d'aller embêter le Taguenet. Alors que le vent se levait, un des plus jeune ironisa, "Quel {this.getNextWord()} il fait !"
+					Ce soir-là, les jeunes remontaient la {this.getNextWord()} principale en chantant à tue-tête : "{this.getNextWord()} a point comme nous". Ils n'arrêtaient pas de se chamailler {this.getNextWord()} les autres quand soudain l'un d'eux ne put résister à la tenta{this.getNextWord()} d'aller embêter le Taguenet. Alors que le vent se levait, un des plus jeunes ironisa, "Quel {this.getNextWord()} il fait !"
 					- Si tu manques de {this.getNextWord()}, reste à la maison, répliqua le chef. A ton âge on {this.getNextWord()} de la bise !
 				</div>
 				<ui.Divider
