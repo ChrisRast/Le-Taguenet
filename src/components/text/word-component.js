@@ -54,7 +54,7 @@ export default class WordComponent extends React.PureComponent {
 	 * @constructor
 	 */
 	constructor (props) {
-		super(...props);
+		super(props);
 
 		this.onChangeValidateWord = this.onChangeValidateWord.bind(this);
 	}

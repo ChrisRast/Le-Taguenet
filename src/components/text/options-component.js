@@ -36,10 +36,14 @@ export default class OptionsComponent extends React.PureComponent {
 	}
 
 	/**
+	 * Class constructor
+	 * @public
 	 * @constructor
+	 * @param {Object} props Component properties
+	 * @return {void}
 	 */
 	constructor (props) {
-		super(...props);
+		super(props);
 
 		this.onChangeStrict = this.onChangeStrict.bind(this);
 		this.onChangeDifficulty = this.onChangeDifficulty.bind(this);
