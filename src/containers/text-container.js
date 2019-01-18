@@ -156,13 +156,7 @@ export default class TextContainer extends React.PureComponent {
 	}
 
 	countTotalWords (words = this.state.words) {
-		const {
-			difficulty,
-		} = this.state;
-
-		return (Object.values(words).filter((word) => {
-			return word.difficulty <= difficulty;
-		}) || []).length;
+		return Object.values(words).length;
 	}
 
 	toggleStrict () {
@@ -187,22 +181,10 @@ export default class TextContainer extends React.PureComponent {
 	}
 
 	getDifficultyOptions () {
-		const {
-			words,
-		} = this.state;
-		const options = [0];
-		Object.keys(words).forEach((key) => {
-			const {
-				difficulty,
-			} = words[key];
-			if (difficulty !== 0 && !options.includes(difficulty)) {
-				options.push(difficulty);
-			}
-		});
-		return options.sort().map((val) => {
+		return Object.keys(labels.difficulty).map((key) => {
 			return {
-				text: labels.difficulty[val],
-				value: val,
+				text: labels.difficulty[key],
+				value: parseInt(key, 10),
 			};
 		});
 	}

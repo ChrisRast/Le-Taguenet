@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as ui from 'semantic-ui-react';
+import {
+	difficulty as difficultyMax,
+} from '../../config/params';
 
 export default class WordComponent extends React.PureComponent {
 	/**
@@ -131,13 +134,8 @@ export default class WordComponent extends React.PureComponent {
 			word,
 			difficulty,
 		} = this.props;
-		const diff = word.difficulty - difficulty;
-
-		if (diff > -1) {
-			return word.strict.substring(0, diff);
-		} else {
-			return '';
-		}
+		let length = difficultyMax - difficulty;
+		return word.strict.substring(0, length);
 	}
 
 	render () {

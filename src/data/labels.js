@@ -1,8 +1,8 @@
 export const difficulty = {
-	0: 'Aucune',
-	1: 'Facile',
-	2: 'Moyenne',
-	3: 'Difficile',
+	0: '3 caractères',
+	1: '2 caractères',
+	2: '1 caractère',
+	3: 'Aucune',
 };
 
 export const validation = {

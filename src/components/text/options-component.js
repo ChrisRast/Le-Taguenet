@@ -109,7 +109,7 @@ export default class OptionsComponent extends React.PureComponent {
 						/>
 					</ui.Menu.Item>
 					<ui.Menu.Item>
-					Difficulté&nbsp;:&nbsp;
+					Aide&nbsp;:&nbsp;
 						<ui.Dropdown
 							inline
 							compact
