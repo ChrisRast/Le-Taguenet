@@ -44,7 +44,7 @@ export default class Home extends React.PureComponent {
 						rel="noopener external nofollow noreferrer"
 					>
 						Semantic-UI
-					</a>.
+					</a>
 					.
 				</p>
 			</ui.Container>
