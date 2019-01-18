@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Le-Taguenet/precache-manifest.6c0becc5087ee17cf9d9a1e3bb8da4b3.js"
+  "/Le-Taguenet/precache-manifest.ebb9ed9b1938dcd6ed66139fcc6e619b.js"
 );
 
 workbox.clientsClaim();
