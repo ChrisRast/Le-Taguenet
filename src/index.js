@@ -10,7 +10,6 @@ import './App.css';
 ReactDOM.render(
 	(
 		<BrowserRouter
-			basename={window.location.hostname === 'localhost' ? '' : 'Le-Taguenet'}
 		>
 			<App />
 		</BrowserRouter>

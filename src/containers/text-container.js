@@ -178,7 +178,6 @@ export default class TextContainer extends React.PureComponent {
 		const {
 			sticky,
 		} = this.state;
-		console.log("sticky", sticky);
 		this.setState({
 			sticky: !sticky,
 		});
