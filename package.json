@@ -27,7 +27,7 @@
   "devDependencies": {
     "eslint-config-react": "https://github.com/oquis/eslint-config-react.git#eslint-2-migration",
     "gh-pages": "^2.0.1",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.4.0"
   },
   "browserslist": [
     ">0.2%",
