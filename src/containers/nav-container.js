@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as ui from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 export default class NavMenu extends React.Component {
 	/**
@@ -9,7 +10,6 @@ export default class NavMenu extends React.Component {
 	 * @type {Object}
 	 */
 	static propTypes = {
-		history: PropTypes.object.isRequired,
 		location: PropTypes.object.isRequired,
 		routes: PropTypes.arrayOf(PropTypes.shape({
 			path: PropTypes.string,
@@ -31,20 +31,6 @@ export default class NavMenu extends React.Component {
 		routes: [],
 	}
 
-	/**
-	 * Go to the specified path
-	 * @method    goTo
-	 * @protected
-	 * @param     {String} path Path to add to history
-	 * @return    {void}
-	 */
-	goTo (path) {
-		const {
-			history,
-		} = this.props;
-		history.push(path);
-	}
-
 	getRoutesNavLink () {
 		const {
 			routes,
@@ -60,8 +46,9 @@ export default class NavMenu extends React.Component {
 			} = menu;
 			return (
 				<ui.Menu.Item
+					as={Link}
 					key={index}
-					onClick={this.goTo.bind(this, path)}
+					to={path}
 					active={location.pathname === path}
 				>
 					{label}

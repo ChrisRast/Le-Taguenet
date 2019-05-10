@@ -6,9 +6,13 @@ import {
 } from './components/nav';
 import NotFound from './components/not-found';
 import NavContainer from './containers/nav-container';
-import * as r from 'react-router-dom';
+import {
+	withRouter,
+	Route,
+	Switch,
+} from 'react-router-dom';
 
-const NavMenuWithRouter = r.withRouter(NavContainer);
+const NavMenuWithRouter = withRouter(NavContainer);
 
 export default class App extends React.Component {
 	renderRoute (route, index) {
@@ -21,7 +25,7 @@ export default class App extends React.Component {
 			...other
 		} = routing;
 		return component && (
-			<r.Route
+			<Route
 				key={index}
 				path={path}
 				component={component}
@@ -38,10 +42,10 @@ export default class App extends React.Component {
 				<NavMenuWithRouter
 					routes={ROUTES_VALUES}
 				/>
-				<r.Switch>
+				<Switch>
 					{ROUTES_VALUES.map(this.renderRoute)}
-					<r.Route component={NotFound}/>
-				</r.Switch>
+					<Route component={NotFound}/>
+				</Switch>
 				<Footer />
 			</div>
 		);

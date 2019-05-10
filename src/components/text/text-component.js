@@ -118,7 +118,7 @@ export default class TextComponent extends React.PureComponent {
 					hidden
 				/>
 				<div>
-					Il était si {this.getNextWord()} qu'on pouvait croire qu'il ne se {this.getNextWord()} jamais. La couche de crasse était si {this.getNextWord()} que mille {this.getNextWord()} d'eau bouillante n'auraient pu la détacher de la {this.getNextWord()} mains. Il sentait le beurre {this.getNextWord()} et était sec comme un {this.getNextWord()}. Son régal était l'omelette aux l{this.getNextWord()} accompagnée de {this.getNextWord()}.
+					Il était si {this.getNextWord()} qu'on pouvait croire qu'il ne se {this.getNextWord()} jamais. La couche de crasse était si {this.getNextWord()} que mille {this.getNextWord()} d'eau bouillante n'auraient pu la détacher de la {this.getNextWord()} mains. Il sentait le beurre {this.getNextWord()} et était sec comme un {this.getNextWord()}. Son régal était l'omelette aux l{this.getNextWord()} accompagnée de fromage de {this.getNextWord()} vieilli 11 mois.
 				</div>
 				<ui.Divider
 					hidden
