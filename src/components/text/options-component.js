@@ -71,6 +71,48 @@ export default class OptionsComponent extends React.PureComponent {
 		}
 	}
 
+	getOrthographMenuItem () {
+		const {
+			strict,
+			strictOptions,
+		} = this.props;
+
+		return (
+			<ui.Menu.Item>
+				Orthographe&nbsp;:&nbsp;
+				<ui.Dropdown
+					inline
+					compact
+					floating
+					onChange={this.onChangeStrict}
+					value={strict.toString()}
+					options={strictOptions}
+				/>
+			</ui.Menu.Item>
+		);
+	}
+
+	getDifficultyMenuItem () {
+		const {
+			difficulty,
+			difficultyOptions,
+		} = this.props;
+
+		return (
+			<ui.Menu.Item>
+				Aide&nbsp;:&nbsp;
+				<ui.Dropdown
+					inline
+					compact
+					floating
+					onChange={this.onChangeDifficulty}
+					value={difficulty}
+					options={difficultyOptions}
+				/>
+			</ui.Menu.Item>
+		);
+	}
+
 	/**
 	 * Main render of the component
 	 * @method render
@@ -79,10 +121,6 @@ export default class OptionsComponent extends React.PureComponent {
 	 */
 	render () {
 		const {
-			strict,
-			strictOptions,
-			difficulty,
-			difficultyOptions,
 			total,
 			valid,
 			sticked,
@@ -103,28 +141,8 @@ export default class OptionsComponent extends React.PureComponent {
 						<ui.Icon name="options" />
 						Paramètres&nbsp;:
 					</ui.Menu.Item>
-					<ui.Menu.Item>
-					Orthographe&nbsp;:&nbsp;
-						<ui.Dropdown
-							inline
-							compact
-							floating
-							onChange={this.onChangeStrict}
-							value={strict.toString()}
-							options={strictOptions}
-						/>
-					</ui.Menu.Item>
-					<ui.Menu.Item>
-					Aide&nbsp;:&nbsp;
-						<ui.Dropdown
-							inline
-							compact
-							floating
-							onChange={this.onChangeDifficulty}
-							value={difficulty}
-							options={difficultyOptions}
-						/>
-					</ui.Menu.Item>
+					{this.getOrthographMenuItem()}
+					{this.getDifficultyMenuItem()}
 					<ui.Menu.Menu
 						position="right"
 					>
