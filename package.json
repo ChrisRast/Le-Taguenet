@@ -19,6 +19,7 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0",
     "remove-accents": "^0.4.2",
     "semantic-ui-css": "~2.4.1",
@@ -26,8 +27,7 @@
   },
   "devDependencies": {
     "eslint-config-react": "https://github.com/oquis/eslint-config-react.git#eslint-2-migration",
-    "gh-pages": "^2.0.1",
-    "react-router-dom": "^5.0.0"
+    "gh-pages": "^2.0.1"
   },
   "browserslist": [
     ">0.2%",
