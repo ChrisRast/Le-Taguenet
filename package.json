@@ -17,7 +17,7 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
-    "react": "^16.8.6",
+    "react": "^16.9.0",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0",
