@@ -11,17 +11,27 @@ export default function Footer (props) {
 				horizontal
 			>
 				<ui.List.Item
-					icon="copyright"
-					content="Christophe Rast"
-				/>
+				>
+					<ui.List.Icon
+						name="copyright"
+						style={{
+							marginRight: ".5rem",
+						}}
+					/>
+					2018 - {new Date().getFullYear()}, Christophe Rast
+				</ui.List.Item>
 				<ui.List.Item
-					icon="code"
-					content={(
-						<a href="https://github.com/ChrisRast/Le-Taguenet" target="blank">
-							Code source
-						</a>
-					)}
-				/>
+				>
+					<ui.List.Icon
+						name="code"
+						style={{
+							marginRight: ".5rem",
+						}}
+					/>
+					<a href="https://github.com/ChrisRast/Le-Taguenet" target="_blank" rel="nofollow noopener noreferrer">
+						Code source
+					</a>
+				</ui.List.Item>
 			</ui.List>
 		</ui.Container>
 	);
