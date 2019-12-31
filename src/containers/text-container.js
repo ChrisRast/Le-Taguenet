@@ -70,9 +70,11 @@ export default class TextContainer extends React.PureComponent {
 			strict,
 			difficulty,
 		} = params;
-		let newWords = {};
+		const newWords = {};
+
 		Object.keys(wordsData).forEach((key) => {
 			const word = wordsData[key];
+
 			newWords[key] = {
 				...word,
 				input: '',
@@ -107,7 +109,8 @@ export default class TextContainer extends React.PureComponent {
 		if (strictLabel) {
 			if (strict) {
 				newValidity = newInputValue === strictLabel;
-			} else {
+			}
+			else {
 				const normalizedWord = accents.remove(newInputValue).toUpperCase().replace(/\s|\W/gi, '');
 				const normalizedStrict = accents.remove(strictLabel).toUpperCase().replace(/\s|\W/gi, '');
 
@@ -125,6 +128,7 @@ export default class TextContainer extends React.PureComponent {
 		const {
 			words,
 		} = this.state;
+
 		Object.keys(words).forEach((key) => {
 			this.validateWord(words[key].input, words[key]);
 		});
@@ -135,6 +139,7 @@ export default class TextContainer extends React.PureComponent {
 			words,
 		} = this.state;
 		const newWords = Object.assign({}, words);
+
 		newWords[key] = {
 			...newWords[key],
 			input: inputValue,
@@ -155,6 +160,7 @@ export default class TextContainer extends React.PureComponent {
 		const {
 			words,
 		} = this.state;
+
 		return (Object.values(words).filter((word) => {
 			return word.validity;
 		}) || []).length;
@@ -178,6 +184,7 @@ export default class TextContainer extends React.PureComponent {
 		const {
 			sticky,
 		} = this.state;
+
 		this.setState({
 			sticky: !sticky,
 		});
@@ -187,6 +194,7 @@ export default class TextContainer extends React.PureComponent {
 		const {
 			difficulty,
 		} = this.state;
+
 		if (difficulty !== value) {
 			this.setState({
 				difficulty: value,
@@ -223,6 +231,7 @@ export default class TextContainer extends React.PureComponent {
 			difficulty,
 			sticky,
 		} = this.state;
+
 		return (
 			<div
 				ref={this.storeWrapperRef}

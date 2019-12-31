@@ -1,7 +1,7 @@
 import React from 'react';
 import * as ui from 'semantic-ui-react';
 
-export default function Footer (props) {
+export default function Footer(props) {
 	return (
 		<ui.Container
 			textAlign="center"
@@ -15,7 +15,7 @@ export default function Footer (props) {
 					<ui.List.Icon
 						name="copyright"
 						style={{
-							marginRight: ".5rem",
+							marginRight: '.5rem',
 						}}
 					/>
 					2018 - {new Date().getFullYear()}, Christophe Rast
@@ -25,10 +25,13 @@ export default function Footer (props) {
 					<ui.List.Icon
 						name="code"
 						style={{
-							marginRight: ".5rem",
+							marginRight: '.5rem',
 						}}
 					/>
-					<a href="https://github.com/ChrisRast/Le-Taguenet" target="_blank" rel="nofollow noopener noreferrer">
+					<a
+						href="https://github.com/ChrisRast/Le-Taguenet"
+						target="_blank"
+						rel="noopener external nofollow noreferrer">
 						Code source
 					</a>
 				</ui.List.Item>

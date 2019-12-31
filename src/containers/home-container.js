@@ -1,7 +1,9 @@
 import React from 'react';
 import * as r from 'react-router-dom';
 import * as ui from 'semantic-ui-react';
-import { ROUTES } from '../config/routes';
+import {
+	ROUTES
+} from '../config/routes';
 
 export default class Home extends React.PureComponent {
 	render () {
@@ -19,26 +21,29 @@ export default class Home extends React.PureComponent {
 					Pour essayer de trouver tous les mots, rendez-vous sur la page <r.Link to={ROUTES['text'].path}>Le texte</r.Link>.
 				</p>
 				<p>
-					C'est également un exercice personnel d'expérimentation de différentes technologies de dévelopment web {/* eslint-disable-line*/}
+					C'est également un exercice personnel d'expérimentation de différentes technologies de dévelopment web&nbsp;
 					<a
 						href="https://fr.wikipedia.org/wiki/D%C3%A9veloppement_web_frontal"
 						target="_blank"
 						rel="noopener external nofollow noreferrer"
 					>
 						front-end
-					</a> utilisant les librairies <a
+					</a> utilisant les librairies&nbsp;
+					<a
 						href="https://reactjs.org/"
 						target="_blank"
 						rel="noopener external nofollow noreferrer"
 					>
 						React
-					</a>, <a
+					</a>,
+					<a
 						href="https://reacttraining.com/react-router/"
 						target="_blank"
 						rel="noopener external nofollow noreferrer"
 					>
 						React-Router
-					</a> et <a
+					</a> et&nbsp;
+					<a
 						href="https://semantic-ui.com/"
 						target="_blank"
 						rel="noopener external nofollow noreferrer"

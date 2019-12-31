@@ -3,6 +3,7 @@ import * as ui from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 export default class OptionsComponent extends React.PureComponent {
+
 	/**
 	 * Range of validators that can be used to make sure the received data is valid
 	 * @public
@@ -57,15 +58,19 @@ export default class OptionsComponent extends React.PureComponent {
 		const {
 			onStrictChange,
 		} = this.props;
+
 		if (typeof onStrictChange === 'function') {
 			onStrictChange();
 		}
 	}
 
-	onChangeDifficulty (event, { value }) {
+	onChangeDifficulty (event, {
+		value,
+	}) {
 		const {
 			onDifficultyChange,
 		} = this.props;
+
 		if (typeof onDifficultyChange === 'function') {
 			onDifficultyChange(value);
 		}
@@ -156,7 +161,7 @@ export default class OptionsComponent extends React.PureComponent {
 								<ui.Icon
 									name="pin"
 									title={sticked ? 'Attacher les options en haut' : 'Détacher les options'}
-									className={sticked ? 'rotate-45' : ''}
+									className={sticked ? '' : 'rotate-45'}
 								/>
 							)}
 						/>

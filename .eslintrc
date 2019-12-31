@@ -416,7 +416,7 @@
     ],
     // require JSDoc comments
     "require-jsdoc": [
-      2,
+      0,
       {
         "require": {
           "FunctionDeclaration": true,
