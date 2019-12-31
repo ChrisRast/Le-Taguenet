@@ -16,7 +16,7 @@ export default class Home extends React.PureComponent {
 					Ce site a été dévelopé pour vous permettre de compléter le texte lacunaire homonyme à l'ère du numérique.
 				</p>
 				<p>
-					Pour essayer de trouver tous les mots, rendez-vous sur <r.Link to={ROUTES['text'].path}>le texte</r.Link>.
+					Pour essayer de trouver tous les mots, rendez-vous sur la page <r.Link to={ROUTES['text'].path}>Le texte</r.Link>.
 				</p>
 				<p>
 					C'est également un exercice personnel d'expérimentation de différentes technologies de dévelopment web {/* eslint-disable-line*/}
