@@ -1,16 +1,19 @@
 import React from 'react';
-import { ROUTES_VALUES } from './config/routes';
+import {
+	ROUTES_VALUES
+} from './config/routes';
 import {
 	Header,
-	Footer,
+	Footer
 } from './components/nav';
 import NotFound from './components/not-found';
 import NavContainer from './containers/nav-container';
 import {
 	withRouter,
 	Route,
-	Switch,
+	Switch
 } from 'react-router-dom';
+import './App.css';
 
 const NavMenuWithRouter = withRouter(NavContainer);
 
@@ -24,6 +27,7 @@ export default class App extends React.Component {
 			component = null,
 			...other
 		} = routing;
+
 		return component && (
 			<Route
 				key={index}
@@ -44,7 +48,7 @@ export default class App extends React.Component {
 				/>
 				<Switch>
 					{ROUTES_VALUES.map(this.renderRoute)}
-					<Route component={NotFound}/>
+					<Route component={NotFound} />
 				</Switch>
 				<Footer />
 			</div>

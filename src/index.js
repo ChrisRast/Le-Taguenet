@@ -1,19 +1,31 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {
+	hydrate, render
+} from 'react-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter } from 'react-router-dom';
+import {
+	BrowserRouter
+} from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import './index.css';
-import './App.css';
 
-ReactDOM.render(
-	(
+const rootElement = document.getElementById('root');
+
+if (rootElement.hasChildNodes()) {
+	hydrate((
 		<BrowserRouter
 		>
 			<App />
 		</BrowserRouter>
-	),
-	document.getElementById('root')
-);
+	), rootElement);
+}
+else {
+	render((
+		<BrowserRouter
+		>
+			<App />
+		</BrowserRouter>
+	), rootElement);
+}
 registerServiceWorker();

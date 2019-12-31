@@ -7,7 +7,7 @@ export const ROUTES = {
 	home: {
 		path: '/',
 		menu: {
-			label: 'Home',
+			label: 'Accueil',
 		},
 		routing: {
 			component: Home,

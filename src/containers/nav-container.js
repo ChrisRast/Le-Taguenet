@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as ui from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import {
+	Link
+} from 'react-router-dom';
 
 export default class NavMenu extends React.Component {
+
 	/**
 	 * Range of validators that can be used to make sure the received data is valid
 	 * @public
@@ -31,11 +34,41 @@ export default class NavMenu extends React.Component {
 		routes: [],
 	}
 
+	/**
+	 * Default state of the component
+	 * @protected
+	 * @type {Object}
+	 * @property {[type]} name desc
+	 */
+	state = {
+		showMenu: false,
+	};
+
+	/**
+	 * Should it show the main menu
+	 * @param {Boolean}
+	 */
+	showMenu = false;
+
+	/**
+	 * Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
+	 * @protected
+	 * @method componentDidMount
+	 * @return {void}
+	 */
+	componentDidMount() {
+		// eslint-disable-next-line react/no-did-mount-set-state
+		this.setState({ // Force re-render
+			showMenu: true,
+		});
+	}
+
 	getRoutesNavLink () {
 		const {
 			routes,
 			location,
 		} = this.props;
+
 		return routes.map((route, index) => {
 			const {
 				path,
@@ -44,10 +77,11 @@ export default class NavMenu extends React.Component {
 			const {
 				label,
 			} = menu;
+
 			return (
 				<ui.Menu.Item
 					as={Link}
-					key={index}
+					key={path}
 					to={path}
 					active={location.pathname === path}
 				>
@@ -57,13 +91,17 @@ export default class NavMenu extends React.Component {
 		});
 	}
 	render () {
+		const {
+			showMenu,
+		} = this.state;
+
 		return (
 			<ui.Menu
 				pointing
 				widths={this.props.routes.length}
 				className="space-bottom"
 			>
-				{this.getRoutesNavLink()}
+				{showMenu && this.getRoutesNavLink()}
 			</ui.Menu>
 		);
 	}
