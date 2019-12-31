@@ -1,16 +1,26 @@
 {
-  "main.css": "/static/css/main.866de960.chunk.css",
-  "main.js": "/static/js/main.d6c266ff.chunk.js",
-  "main.js.map": "/static/js/main.d6c266ff.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.fdfcfda2.js",
-  "runtime~main.js.map": "/static/js/runtime~main.fdfcfda2.js.map",
-  "static/css/2.8e0b7168.chunk.css": "/static/css/2.8e0b7168.chunk.css",
-  "static/js/2.971b043a.chunk.js": "/static/js/2.971b043a.chunk.js",
-  "static/js/2.971b043a.chunk.js.map": "/static/js/2.971b043a.chunk.js.map",
-  "index.html": "/index.html",
-  "precache-manifest.0d653fa8dedd9f032ed8008a94c34a3c.js": "/precache-manifest.0d653fa8dedd9f032ed8008a94c34a3c.js",
-  "service-worker.js": "/service-worker.js",
-  "static/css/2.8e0b7168.chunk.css.map": "/static/css/2.8e0b7168.chunk.css.map",
-  "static/css/main.866de960.chunk.css.map": "/static/css/main.866de960.chunk.css.map",
-  "static/media/semantic.min.css": "/static/media/outline-icons.ef60a4f6.woff"
+  "files": {
+    "main.css": "/static/css/main.cdf4572a.chunk.css",
+    "main.js": "/static/js/main.97e3d5bf.chunk.js",
+    "main.js.map": "/static/js/main.97e3d5bf.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.aaaff7ad.js",
+    "runtime-main.js.map": "/static/js/runtime-main.aaaff7ad.js.map",
+    "static/css/2.5f2f5f0e.chunk.css": "/static/css/2.5f2f5f0e.chunk.css",
+    "static/js/2.1f3ab1ea.chunk.js": "/static/js/2.1f3ab1ea.chunk.js",
+    "static/js/2.1f3ab1ea.chunk.js.map": "/static/js/2.1f3ab1ea.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.d30ca4fade2b3df0f032f43a9708877c.js": "/precache-manifest.d30ca4fade2b3df0f032f43a9708877c.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.5f2f5f0e.chunk.css.map": "/static/css/2.5f2f5f0e.chunk.css.map",
+    "static/css/main.cdf4572a.chunk.css.map": "/static/css/main.cdf4572a.chunk.css.map",
+    "static/js/2.1f3ab1ea.chunk.js.LICENSE": "/static/js/2.1f3ab1ea.chunk.js.LICENSE",
+    "static/media/semantic.min.css": "/static/media/outline-icons.ef60a4f6.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aaaff7ad.js",
+    "static/css/2.5f2f5f0e.chunk.css",
+    "static/js/2.1f3ab1ea.chunk.js",
+    "static/css/main.cdf4572a.chunk.css",
+    "static/js/main.97e3d5bf.chunk.js"
+  ]
 }
