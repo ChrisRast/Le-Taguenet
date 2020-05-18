@@ -21,7 +21,7 @@
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "^3.3.0",
     "remove-accents": "^0.4.2",
     "semantic-ui-css": "~2.4.1",
