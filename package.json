@@ -16,7 +16,9 @@
     "eject": "react-scripts eject",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
-    "serve": "serve -s build"
+    "serve": "serve -s build",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "dependencies": {
     "react": "^16.12.0",
@@ -25,7 +27,8 @@
     "react-scripts": "^3.3.0",
     "remove-accents": "^0.4.2",
     "semantic-ui-css": "~2.4.1",
-    "semantic-ui-react": "~0.88.2"
+    "semantic-ui-react": "~0.88.2",
+    "snyk": "^1.321.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
@@ -40,5 +43,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "snyk": true
 }
